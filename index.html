@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oneiros Studio — Montage vidéo</title>
+<meta name="description" content="Oneiros Studio — montage vidéo : pubs et teasers de lancement, VSL, formats verticaux, fiction.">
+<meta property="og:title" content="Oneiros Studio — Montage vidéo">
+<meta property="og:description" content="Pubs et teasers de lancement, VSL, formats verticaux, fiction.">
+<meta property="og:image" content="https://oneiros-studio.com/posters/showreel.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/seal.svg" type="image/svg+xml">
+<link rel="preload" href="assets/dunhill.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Dunhill";src:url("assets/dunhill.woff2") format("woff2");font-display:swap}
+:root{
+  --ink:#0A0A0C; --ink-2:#121215; --ink-3:#1A1A1E;
+  --bone:#EFEBE3; --muted:#8A8884; --line:#2A2A2E;
+  --serif:"Dunhill","Times New Roman",Georgia,serif;
+  --pad:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--bone);font-family:var(--serif);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+.caps{text-transform:uppercase;letter-spacing:.28em}
+.caps-s{text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--muted)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(10,10,12,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{width:38px;height:38px}
+.brand span{font-size:19px;letter-spacing:.28em}
+nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,32px)}
+nav a{text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--bone)}
+.lang{border:1px solid var(--line);background:none;color:var(--bone);font:inherit;font-size:12px;letter-spacing:.16em;padding:6px 10px;cursor:pointer}
+.lang:hover{border-color:var(--muted)}
+@media (max-width:720px){nav a.opt{display:none}}
+@media (max-width:520px){.brand span{font-size:16px;letter-spacing:.2em}.brand img{width:32px;height:32px}nav{gap:12px}nav a{letter-spacing:.1em}}
+
+/* hero */
+.hero{padding-top:clamp(56px,10vw,120px);padding-bottom:clamp(36px,6vw,64px);text-align:center}
+.hero .seal{width:clamp(110px,16vw,168px);margin:0 auto 34px}
+.hero h1{font-weight:400;font-size:clamp(44px,9vw,104px);letter-spacing:.28em;margin-right:-.28em;line-height:1}
+.hero p{max-width:640px;margin:28px auto 0;color:var(--muted);font-size:clamp(17px,2vw,20px)}
+.reel{margin-top:clamp(40px,6vw,72px);position:relative;border:1px solid var(--line);background:#000;aspect-ratio:16/9;cursor:pointer;overflow:hidden}
+.reel img,.reel video{width:100%;height:100%;object-fit:cover}
+.reel .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(to top,rgba(10,10,12,.55),rgba(10,10,12,.1) 55%);transition:background .3s}
+.reel:hover .play{background:linear-gradient(to top,rgba(10,10,12,.35),rgba(10,10,12,0) 55%)}
+.play-btn{display:flex;align-items:center;gap:16px;font-size:14px;letter-spacing:.28em;text-transform:uppercase}
+.play-btn i{width:64px;height:64px;border:1px solid var(--bone);border-radius:50%;display:grid;place-items:center}
+.play-btn i:after{content:"";border-left:14px solid var(--bone);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.reel .meta{position:absolute;left:20px;bottom:16px;right:20px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);opacity:.85;pointer-events:none}
+
+/* sections */
+section{padding:clamp(56px,9vw,112px) 0 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}
+.sec-head h2{font-weight:400;font-size:clamp(24px,3.4vw,34px);letter-spacing:.28em;text-transform:uppercase}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{background:none;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--bone);border-color:var(--muted)}
+.filters button[aria-pressed="true"]{color:var(--ink);background:var(--bone);border-color:var(--bone)}
+
+/* grid */
+.grid{display:grid;align-items:start;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:clamp(16px,2vw,28px)}
+.grid.vert{grid-template-columns:repeat(auto-fill,minmax(min(46%,210px),1fr))}
+.card{cursor:pointer;background:none;border:0;color:inherit;text-align:left;font:inherit;display:block;width:100%}
+.thumb{position:relative;overflow:hidden;background:var(--ink-2);border:1px solid var(--line);aspect-ratio:16/9}
+.card[data-ratio="9:16"] .thumb{aspect-ratio:9/16}
+.card[data-ratio="1:1"] .thumb{aspect-ratio:1/1}
+.thumb img,.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s,transform .8s}
+.thumb video{opacity:0}
+.card.playing .thumb video{opacity:1}
+.card:hover .thumb img{transform:scale(1.03)}
+.tag{position:absolute;top:10px;left:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:rgba(10,10,12,.78);border:1px solid rgba(239,235,227,.18);padding:4px 8px}
+.dur{position:absolute;right:10px;bottom:10px;font-size:12px;letter-spacing:.08em;background:rgba(10,10,12,.78);padding:2px 7px}
+.card h3{font-weight:400;font-size:21px;letter-spacing:.16em;text-transform:uppercase;margin-top:14px}
+.card p{color:var(--muted);font-size:15.5px;line-height:1.45;margin-top:4px}
+.card .role{font-size:13px;letter-spacing:.06em;margin-top:6px;color:var(--bone);opacity:.75}
+.card:focus-visible{outline:1px solid var(--bone);outline-offset:6px}
+.hidden{display:none!important}
+.sub{margin:44px 0 18px;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--line)}
+.svc{padding:28px 24px 30px 0;border-bottom:1px solid var(--line)}
+.svc h3{font-weight:400;font-size:19px;letter-spacing:.16em;text-transform:uppercase}
+.svc p{color:var(--muted);font-size:16px;margin-top:10px}
+.note{color:var(--muted);margin-top:24px;font-size:16px}
+
+/* contact */
+.contact{text-align:center;padding-bottom:clamp(64px,9vw,112px)}
+.contact h2{font-weight:400;font-size:clamp(28px,5vw,52px);letter-spacing:.28em;margin-right:-.28em;text-transform:uppercase}
+.contact p{color:var(--muted);max-width:560px;margin:18px auto 0}
+.links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+.links a{text-decoration:none;border:1px solid var(--bone);padding:14px 26px;font-size:13px;letter-spacing:.28em;text-transform:uppercase;transition:all .2s}
+.links a:hover{background:var(--bone);color:var(--ink)}
+.handle{margin-top:22px;font-size:20px;letter-spacing:.16em}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100dvh;margin:0}
+dialog::backdrop{background:rgba(5,5,6,.94)}
+.lb{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px var(--pad) 24px;gap:14px}
+.lb video{max-width:100%;max-height:calc(100dvh - 150px);background:#000;outline:none}
+.lb .cap{text-align:center;color:var(--bone)}
+.lb .cap b{font-weight:400;letter-spacing:.16em;text-transform:uppercase}
+.lb .cap span{color:var(--muted);display:block;font-size:15px}
+.close{position:fixed;top:14px;right:18px;background:none;border:1px solid var(--line);color:var(--bone);font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;cursor:pointer}
+.close:hover{border-color:var(--bone)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Oneiros Studio"><img src="assets/seal.svg" alt=""><span>ONEIROS</span></a>
+    <nav>
+      <a href="#travaux" data-i18n="nav_work">Travaux</a>
+      <a class="opt" href="#services" data-i18n="nav_services">Services</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <button class="lang" id="lang" aria-label="Switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <img class="seal" src="assets/seal.svg" alt="Sceau Oneiros">
+    <h1>ONEIROS</h1>
+    <p data-i18n="hero">Studio de montage vidéo. Pubs et teasers de lancement, VSL, formats verticaux et fiction — de l'idée au dernier son.</p>
+    <div class="reel" id="reel" role="button" tabindex="0" aria-label="Lire le showreel">
+      <img src="posters/showreel.jpg" alt="Extrait du showreel Oneiros Studio">
+      <div class="play"><div class="play-btn"><i></i><span data-i18n="reel">Showreel 2026</span></div></div>
+      <div class="meta"><span>Oneiros Studio</span><span>0:58</span></div>
+    </div>
+  </div>
+
+  <section id="travaux">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-i18n="work">Travaux</h2>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div id="works"></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head"><h2 data-i18n="services">Services</h2></div>
+      <div class="services" id="svc"></div>
+      <p class="note" data-i18n="note">Chaque projet est livré en 16:9 et en 9:16 sur demande. Devis et délais sur simple message.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 data-i18n="contact">Travaillons ensemble</h2>
+      <p data-i18n="contact_p">Un lancement, une pub, une série de formats courts ? Écrivez-moi avec votre projet et votre date de sortie.</p>
+      <div class="links">
+        <a href="https://x.com/oneirosstudio" target="_blank" rel="noopener">X</a>
+        <a href="https://t.me/oneirosstudio" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="handle">@oneirosstudio</div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Oneiros Studio</span><span data-i18n="foot">Visuels IA, montage et sound design</span></div></footer>
+
+<dialog id="lb" aria-label="Lecteur vidéo">
+  <button class="close" id="close" data-i18n="close">Fermer</button>
+  <div class="lb"><video id="lbv" controls playsinline></video><div class="cap" id="lbc"></div></div>
+</dialog>
+
+<script>
+const T = {
+  fr:{nav_work:"Travaux",nav_services:"Services",nav_contact:"Contact",hero:"Studio de montage vidéo. Pubs et teasers de lancement, VSL, formats verticaux et fiction — de l'idée au dernier son.",reel:"Showreel 2026",work:"Travaux",services:"Services",note:"Chaque projet peut être livré en 16:9 et en 9:16. Devis et délais sur simple message.",contact:"Travaillons ensemble",contact_p:"Un lancement, une pub, une série de formats courts ? Écrivez-moi avec votre projet et votre date de sortie.",foot:"Visuels IA, montage et sound design",close:"Fermer",
+      all:"Tout",ads:"Pubs & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"VSL & pédagogie",anim:"Animation",
+      client:"Client",spec:"Spec",test:"Test de montage",perso:"Projet perso",studio:"Studio",
+      sub_clients:"Clients",sub_spec:"Spec — pubs réalisées sans commande"},
+  en:{nav_work:"Work",nav_services:"Services",nav_contact:"Contact",hero:"Video editing studio. Launch ads and teasers, VSLs, vertical formats and short film — from the idea to the final sound.",reel:"Showreel 2026",work:"Work",services:"Services",note:"Every project can be delivered in 16:9 and 9:16. Quotes and timelines on request.",contact:"Let's work together",contact_p:"A launch, an ad, a series of short-form videos? Message me with your project and your release date.",foot:"AI visuals, editing and sound design",close:"Close",
+      all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"VSL & education",anim:"Animation",
+      client:"Client",spec:"Spec",test:"Editing test",perso:"Personal project",studio:"Studio",
+      sub_clients:"Clients",sub_spec:"Spec — unsolicited ads"}
+};
+const ROLE_PROMO = {fr:"Direction artistique, visuels IA, montage, sound design",en:"Art direction, AI visuals, editing, sound design"};
+const W = [
+ {id:"le-sceau",title:{fr:"Le sceau",en:"The Seal"},kind:"client",cat:"ads",dur:"0:10",fr:"Teaser de lancement d'un protocole de confidentialité. Tout le monde voit vos transactions — sauf celle-ci.",en:"Launch teaser for a privacy protocol. Everyone sees your moves — except this one.",role:ROLE_PROMO},
+ {id:"homme-tele",title:{fr:"L'homme-télé",en:"TV Head"},kind:"client",cat:"ads",dur:"0:16",fr:"Teaser de lancement d'un token — un seul plan, une tension qui monte jusqu'à l'embrasement.",en:"Token launch teaser — one shot, tension building up to ignition.",role:ROLE_PROMO},
+ {id:"dividendes",title:{fr:"Dividendes",en:"Dividends"},kind:"spec",cat:"ads",dur:"0:10",fr:"Des dividendes sur papier aux dividendes onchain.",en:"From paper dividends to onchain dividends.",role:ROLE_PROMO},
+ {id:"cage-escalier",title:{fr:"La cage d'escalier",en:"The Stairwell"},kind:"spec",cat:"ads",dur:"0:10",fr:"Les satellites voient les toits. Personne ne voit la cage d'escalier.",en:"Satellites see roofs. Nobody sees the stairwell.",role:ROLE_PROMO},
+ {id:"veille",title:{fr:"Veille",en:"Standby"},kind:"spec",cat:"ads",dur:"0:10",fr:"Vous dormez. Votre appareil, non.",en:"You're asleep. Your device isn't.",role:ROLE_PROMO},
+ {id:"oracle",title:{fr:"L'oracle",en:"The Oracle"},kind:"spec",cat:"ads",dur:"0:12",fr:"L'oracle donne des réponses. Le marché donne des cotes.",en:"The oracle gives answers. The market gives odds.",role:ROLE_PROMO},
+ {id:"ecrans",title:{fr:"Écrans",en:"Screens"},kind:"spec",cat:"ads",dur:"0:10",fr:"Une ville en noir et blanc, et tous les écrans qui s'allument.",en:"A black-and-white city, and every screen lighting up.",role:ROLE_PROMO},
+ {id:"trailer-oneiros",title:{fr:"Trailer Oneiros",en:"Oneiros Trailer"},kind:"studio",cat:"ads",dur:"0:17",fr:"Le trailer du studio.",en:"The studio trailer.",role:ROLE_PROMO},
+ {id:"dead-weight",title:{fr:"Dead Weight",en:"Dead Weight"},kind:"perso",cat:"fiction",dur:"3:32",fr:"Court-métrage réalisé pour le Higgsfield Global Film Festival. Une femme, une voiture, un coffre qui ne devrait pas être plein.",en:"Short film made for the Higgsfield Global Film Festival. A woman, a car, and a trunk that shouldn't be full.",role:{fr:"Réalisation, visuels IA, montage, sound design",en:"Direction, AI visuals, editing, sound design"}},
+ {id:"vsl-toeic",title:{fr:"VSL — méthode TOEIC",en:"VSL — TOEIC method"},kind:"test",cat:"vsl",dur:"1:34",fr:"Vidéo de vente d'une méthode de préparation au TOEIC : face caméra, graphiques animés, habillage.",en:"Sales video for a TOEIC prep method: talking head, animated graphics, branding.",role:{fr:"Montage, motion design",en:"Editing, motion design"}},
+ {id:"cours-toeic",title:{fr:"Cours en ligne — TOEIC",en:"Online course — TOEIC"},kind:"test",cat:"vsl",dur:"1:20",fr:"Extrait d'un cours en ligne : face caméra et fiches animées.",en:"Online course excerpt: talking head and animated slides.",role:{fr:"Montage, motion design",en:"Editing, motion design"}},
+ {id:"boulangerie",title:{fr:"La boulangerie",en:"The Bakery"},kind:"perso",cat:"anim",ratio:"1:1",dur:"0:16",fr:"Pub animée pour une boulangerie de quartier.",en:"Animated ad for a local bakery.",role:{fr:"Illustration IA, animation, montage",en:"AI illustration, animation, editing"}},
+ {id:"nora",title:{fr:"Nora",en:"Nora"},kind:"perso",cat:"vertical",ratio:"9:16",dur:"0:32",fr:"Format court vertical : présentatrice, plans d'illustration, sous-titres animés.",en:"Vertical short: presenter, b-roll, animated captions.",role:{fr:"Visuels IA, montage, sous-titres",en:"AI visuals, editing, captions"}},
+ {id:"le-sceau-9x16",title:{fr:"Le sceau — 9:16",en:"The Seal — 9:16"},kind:"client",cat:"vertical",ratio:"9:16",dur:"0:10",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"homme-tele-9x16",title:{fr:"L'homme-télé — 9:16",en:"TV Head — 9:16"},kind:"client",cat:"vertical",ratio:"9:16",dur:"0:16",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"dividendes-9x16",title:{fr:"Dividendes — 9:16",en:"Dividends — 9:16"},kind:"spec",cat:"vertical",ratio:"9:16",dur:"0:10",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"veille-9x16",title:{fr:"Veille — 9:16",en:"Standby — 9:16"},kind:"spec",cat:"vertical",ratio:"9:16",dur:"0:10",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"oracle-9x16",title:{fr:"L'oracle — 9:16",en:"The Oracle — 9:16"},kind:"spec",cat:"vertical",ratio:"9:16",dur:"0:12",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"ecrans-9x16",title:{fr:"Écrans — 9:16",en:"Screens — 9:16"},kind:"spec",cat:"vertical",ratio:"9:16",dur:"0:10",fr:"Version verticale.",en:"Vertical cut."},
+ {id:"cage-escalier-9x16",title:{fr:"La cage d'escalier — 9:16",en:"The Stairwell — 9:16"},kind:"spec",cat:"vertical",ratio:"9:16",dur:"0:10",fr:"Version verticale.",en:"Vertical cut."},
+];
+const SVC = [
+ {fr:["Pubs & teasers","Teasers de 10–15 s et trailers de lancement de 30–45 s : script, visuels, montage, sound design, carte de fin."],en:["Ads & teasers","10–15 s teasers and 30–45 s launch trailers: script, visuals, editing, sound design, end card."]},
+ {fr:["Formats verticaux","TikTok, Reels, Shorts : rythme, sous-titres animés, plans d'illustration, déclinaison de vos vidéos en 9:16."],en:["Vertical formats","TikTok, Reels, Shorts: pacing, animated captions, b-roll, 9:16 versions of your videos."]},
+ {fr:["VSL & pédagogie","Montage face caméra, motion design, graphiques et habillage pour vendre ou expliquer."],en:["VSL & education","Talking-head editing, motion design, graphics and branding that sell or explain."]},
+ {fr:["Fiction & narratif","Courts-métrages et récits de marque : découpage, rythme, ambiance sonore."],en:["Fiction & narrative","Short films and brand stories: cutting, pacing, sound atmosphere."]},
+];
+const CATS=["all","ads","vertical","fiction","vsl","anim"];
+let lang = (navigator.language||"fr").slice(0,2)==="fr" ? "fr" : "en";
+try{ const s=localStorage.getItem("lang"); if(s==="fr"||s==="en") lang=s; }catch(e){}
+let cat="all";
+const $=s=>document.querySelector(s);
+
+function card(w){
+  const b=document.createElement("button");
+  b.className="card"; b.dataset.ratio=w.ratio||"16:9"; b.dataset.cat=w.cat;
+  b.innerHTML=`<div class="thumb"><img loading="lazy" src="posters/${w.id}.jpg" alt=""><video muted loop playsinline preload="none"></video><span class="tag">${T[lang][w.kind]}</span><span class="dur">${w.dur}</span></div><h3>${w.title[lang]}</h3><p>${w[lang]}</p>${w.role?`<div class="role">${w.role[lang]}</div>`:""}`;
+  const v=b.querySelector("video");
+  const hover=matchMedia("(hover:hover)").matches;
+  if(hover){
+    b.addEventListener("mouseenter",()=>{ if(!v.src) v.src=`media/${w.id}.mp4`; v.play().then(()=>b.classList.add("playing")).catch(()=>{}); });
+    b.addEventListener("mouseleave",()=>{ v.pause(); b.classList.remove("playing"); });
+  }
+  b.addEventListener("click",()=>openLB(w.id,w.title[lang],w[lang]));
+  return b;
+}
+function render(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(e=>{e.textContent=T[lang][e.dataset.i18n]});
+  $("#lang").textContent = lang==="fr"?"EN":"FR";
+  const f=$("#filters"); f.innerHTML="";
+  CATS.forEach(c=>{const x=document.createElement("button");x.textContent=T[lang][c];x.setAttribute("aria-pressed",c===cat);x.onclick=()=>{cat=c;render()};f.appendChild(x)});
+  const box=$("#works"); box.innerHTML="";
+  const list=W.filter(w=>cat==="all"||w.cat===cat);
+  const groups = cat==="all"
+    ? [[T[lang].sub_clients, list.filter(w=>w.kind==="client"&&w.cat==="ads")],
+       [T[lang].sub_spec, list.filter(w=>w.cat==="ads"&&w.kind!=="client")],
+       [T[lang].fiction, list.filter(w=>w.cat==="fiction")],
+       [T[lang].vsl, list.filter(w=>w.cat==="vsl")],
+       [T[lang].vertical, list.filter(w=>w.cat==="vertical")],
+       [T[lang].anim, list.filter(w=>w.cat==="anim")]]
+    : [[null,list]];
+  groups.forEach(([title,items])=>{
+    if(!items.length) return;
+    if(title){const h=document.createElement("div");h.className="sub";h.textContent=title;box.appendChild(h)}
+    const g=document.createElement("div"); g.className="grid"+(items.every(w=>w.ratio==="9:16")?" vert":"");
+    items.forEach(w=>g.appendChild(card(w))); box.appendChild(g);
+  });
+  const s=$("#svc"); s.innerHTML="";
+  SVC.forEach(x=>{const d=document.createElement("div");d.className="svc";d.innerHTML=`<h3>${x[lang][0]}</h3><p>${x[lang][1]}</p>`;s.appendChild(d)});
+}
+const lb=$("#lb"), lbv=$("#lbv");
+function openLB(id,title,desc){
+  lbv.src=`media/${id}.mp4`; lbv.poster=`posters/${id}.jpg`;
+  $("#lbc").innerHTML=`<b>${title}</b>${desc?`<span>${desc}</span>`:""}`;
+  lb.showModal(); lbv.play().catch(()=>{});
+}
+function closeLB(){ lbv.pause(); lbv.removeAttribute("src"); lbv.load(); lb.close(); }
+$("#close").onclick=closeLB;
+lb.addEventListener("click",e=>{ if(e.target===lb||e.target.classList.contains("lb")) closeLB(); });
+lb.addEventListener("cancel",e=>{ e.preventDefault(); closeLB(); });
+const reel=$("#reel");
+const openReel=()=>openLB("showreel","Oneiros — Showreel 2026","");
+reel.addEventListener("click",openReel);
+reel.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openReel()}});
+$("#lang").onclick=()=>{lang=lang==="fr"?"en":"fr";try{localStorage.setItem("lang",lang)}catch(e){};render()};
+render();
+</script>
+</body>
+</html>

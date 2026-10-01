@@ -275,7 +275,7 @@ footer .gr{letter-spacing:.32em}
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Oneiros Studio · <span class="gr">ΟΝΕΙΡΟΣ</span></span><span data-i18n="foot">Visuels IA, montage et sound design</span></div></footer>
+<footer><div class="wrap"><span>© Oneiros Studio · <span class="gr">ΟΝΕΙΡΟΣ</span></span><span data-i18n="foot">Visuels IA, montage et sound design</span></div></footer>
 
 <dialog id="lb" aria-label="Lecteur vidéo">
   <button class="close" id="close" data-i18n="close">Fermer</button>
@@ -377,7 +377,7 @@ function closeLB(){ lbv.pause(); lbv.removeAttribute("src"); lbv.load(); lb.clos
 $("#close").onclick=closeLB;
 lb.addEventListener("click",e=>{ if(e.target===lb||e.target.classList.contains("lb")) closeLB(); });
 lb.addEventListener("cancel",e=>{ e.preventDefault(); closeLB(); });
-const openReel=()=>openLB("showreel","Oneiros — Showreel 2026","");
+const openReel=()=>openLB("showreel","Oneiros — Showreel","");
 $("#reel").addEventListener("click",openReel);
 
 /* --- plongée caméra : la position de défilement choisit l'image de la séquence --- */

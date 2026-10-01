@@ -67,6 +67,7 @@ export async function launch({ from, i18n, onEnd }) {
         <span><kbd>←</kbd><kbd>→</kbd> ${T.turn}</span><span><kbd>${T.space}</kbd> ${T.bolt}</span>
         <span><kbd>Échap</kbd> ${T.land}</span>
       </div>
+      <p class="peg-tip">${T.scrollHint}</p>
     </div>
     <div class="peg-hud"><span class="peg-count"></span><span class="peg-time">00:00.0</span></div>
     ${touch ? `<div class="peg-pad"><button data-k="ArrowLeft">◀</button><button data-k="ArrowUp">▲</button><button data-k="ArrowRight">▶</button><button data-k=" ">ϟ</button></div>` : ''}`;
@@ -109,14 +110,30 @@ export async function launch({ from, i18n, onEnd }) {
   updHud();
 
   // clavier
+  // La page ne suit Pégase que tant qu'on le pilote : molette, trackpad, barre de défilement
+  // ou doigt reprennent la main ; une commande de vol relance le suivi.
+  let follow = true, ourScroll = scrollY;
+  const maxScroll = () => doc.scrollHeight - innerHeight;
+  const setScroll = y => { ourScroll = Math.round(Math.max(0, Math.min(maxScroll(), y))); scrollTo(0, ourScroll); };
+  const release = () => { follow = false; };
+  const onScroll = () => { if (Math.abs(scrollY - ourScroll) > 3) follow = false; };
+  addEventListener('wheel', release, { passive: true }); addEventListener('touchmove', release, { passive: true }); addEventListener('scroll', onScroll, { passive: true });
+  function resume() {
+    if (follow) return; follow = true;
+    const top = scrollY + H * .2, bottom = scrollY + H * .8;
+    if (ship.y < top || ship.y > bottom) {            // Pégase réapparaît au bord de l'écran où l'on se trouve
+      ship.y = ship.y < top ? top : bottom; ship.vx = ship.vy = 0; burst(ship.x, ship.y, 26, GOLD);
+    }
+    ourScroll = scrollY;
+  }
   const GAME_KEYS = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'Spacebar']);
-  const kd = e => { if (e.key === 'Escape') return end(); if (GAME_KEYS.has(e.key)) { e.preventDefault(); keys.add(e.key === 'Spacebar' ? ' ' : e.key); panel.classList.add('dim'); } };
+  const kd = e => { if (e.key === 'Escape') return end(); if (GAME_KEYS.has(e.key)) { e.preventDefault(); resume(); keys.add(e.key === 'Spacebar' ? ' ' : e.key); panel.classList.add('dim'); } };
   const ku = e => { keys.delete(e.key === 'Spacebar' ? ' ' : e.key); };
   addEventListener('keydown', kd); addEventListener('keyup', ku);
   layer.querySelector('.peg-x').onclick = end;
   layer.querySelectorAll('.peg-pad button').forEach(b => {
     const k = b.dataset.k;
-    b.addEventListener('pointerdown', e => { e.preventDefault(); keys.add(k); panel.classList.add('dim'); });
+    b.addEventListener('pointerdown', e => { e.preventDefault(); resume(); keys.add(k); panel.classList.add('dim'); });
     ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => b.addEventListener(ev, () => keys.delete(k)));
   });
 
@@ -139,8 +156,10 @@ export async function launch({ from, i18n, onEnd }) {
     if (ship.x < 30) { ship.x = 30; ship.vx = Math.abs(ship.vx) * .5; } if (ship.x > W - 30) { ship.x = W - 30; ship.vx = -Math.abs(ship.vx) * .5; }
     ship.y = Math.max(40, Math.min(docH() - 40, ship.y));
     // la page suit le vol
-    const sy = ship.y - scrollY;
-    if (sy > H * .62) scrollTo(0, ship.y - H * .62); else if (sy < H * .38) scrollTo(0, Math.max(0, ship.y - H * .38));
+    if (follow) {
+      const sy = ship.y - scrollY;
+      if (sy > H * .62) setScroll(ship.y - H * .62); else if (sy < H * .38) setScroll(ship.y - H * .38);
+    }
     // foudre
     cooldown -= dt;
     if (keys.has(' ') && cooldown <= 0) {
@@ -218,7 +237,7 @@ export async function launch({ from, i18n, onEnd }) {
 
   function end() {
     if (!running) return; running = false;
-    cancelAnimationFrame(raf); removeEventListener('keydown', kd); removeEventListener('keyup', ku); removeEventListener('resize', resize);
+    cancelAnimationFrame(raf); removeEventListener('keydown', kd); removeEventListener('keyup', ku); removeEventListener('resize', resize); removeEventListener('wheel', release); removeEventListener('touchmove', release); removeEventListener('scroll', onScroll);
     renderer.dispose(); layer.remove(); doc.style.scrollBehavior = prevBehavior; onEnd && onEnd();
   }
   raf = requestAnimationFrame(frame);

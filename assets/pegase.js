@@ -91,7 +91,7 @@ export async function launch({ from, i18n, onEnd }) {
 
   // état du vol (coordonnées du document, en px)
   const r0 = from.getBoundingClientRect();
-  const ship = { x: r0.left + 40, y: scrollY + r0.top + r0.height / 2, vx: 0, vy: 0, a: Math.PI / 2, bank: 0, alive: true };
+  const ship = { x: r0.left + r0.width / 2, y: scrollY + r0.top + r0.height / 2, vx: 0, vy: 0, a: Math.PI / 2, bank: 0, alive: true };
   const keys = new Set(); let cooldown = 0;
   const bolts = [], parts = [];
   const docH = () => doc.scrollHeight;

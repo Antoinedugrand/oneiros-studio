@@ -202,6 +202,33 @@ nav .hand{font-size:24px;letter-spacing:0}
 .n-svc{position:absolute;right:-10px;top:-46px;font-size:30px;transform:rotate(5deg)}
 @media (max-width:760px){.svc-sec .sheet{transform:none}.svc{min-height:0}.n-svc{position:static;display:block;margin-bottom:8px;transform:none}}
 
+/* rate card */
+.rates{padding-top:clamp(90px,11vw,130px)}
+.rates-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.rates-head h2{font-family:var(--display);font-weight:900;font-size:clamp(48px,6vw,80px);line-height:1;text-transform:uppercase}
+.rates-head .line{flex:1;min-width:40px;height:1px;background:var(--line)}
+.rates-head .hand{font-size:28px}
+.rtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.rtabs button{background:none;border:1px solid var(--line);color:var(--cream);font-family:var(--label);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:9px 13px;cursor:pointer;transition:all .2s}
+.rtabs button:hover{border-color:var(--gold);color:var(--gold)}
+.rtabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.rsheet{max-width:1100px;margin:0 auto;padding:clamp(18px,2.4vw,30px);transform:rotate(.7deg)}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:start;padding:20px 0;border-bottom:2px solid #C8C0AE}
+.rrow:last-child{border-bottom:0;padding-bottom:6px}
+.rname{font-family:var(--display);font-weight:900;font-size:clamp(28px,3.4vw,42px);line-height:.95;text-transform:uppercase;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.reco{font-family:var(--label);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 7px;transform:rotate(-3deg)}
+.rprice{font-family:var(--display);font-weight:900;font-size:clamp(32px,4.2vw,50px);line-height:.95;color:var(--red);text-align:right;white-space:nowrap}
+.rdesc{grid-column:1/-1;font-size:15.5px;line-height:1.5;color:#4a463f}
+.rdesc i{display:block;font-style:normal;color:#7a7365}
+.raddons{margin-top:6px;border-top:4px double var(--ink);padding-top:14px;display:grid;gap:8px}
+.raddons:empty{display:none}
+.raddons h3{font-family:var(--label);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.raddon{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:15.5px}
+.raddon b{font-family:var(--display);font-weight:900;font-size:24px;color:var(--red);white-space:nowrap}
+.rterms{list-style:none;max-width:1100px;margin:30px auto 0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--muted)}
+.rterms li:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin:0 12px 2px 0}
+@media (max-width:760px){.rsheet{transform:none}.rrow{grid-template-columns:1fr}.rprice{text-align:left}}
+
 /* contact */
 .contact{padding:clamp(90px,11vw,140px) 0 clamp(60px,8vw,100px)}
 .contact .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
@@ -238,6 +265,7 @@ dialog::backdrop{background:rgba(5,9,9,.95)}
     <nav>
       <a href="#work" data-i18n="nav_work">Work</a>
       <a class="opt" href="#services" data-i18n="nav_services">Services</a>
+      <a class="opt" href="#rates" data-i18n="nav_rates">Rates</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       <span class="hand" data-i18n="edition">night edition</span>
       <button class="lang" id="lang" aria-label="Switch language">FR</button>
@@ -318,6 +346,19 @@ dialog::backdrop{background:rgba(5,9,9,.95)}
     </div>
   </section>
 
+  <section class="rates" id="rates">
+    <div class="wrap">
+      <div class="rates-head"><h2 data-i18n="rates">Rate card</h2><span class="line"></span><span class="hand" data-i18n="rates_s">pick your line, then DM us</span></div>
+      <div class="rtabs" id="rtabs" role="tablist"></div>
+      <div class="sheet rsheet" role="tabpanel">
+        <div class="sheet-head"><h2 id="rtitle"></h2><span id="rwho"></span></div>
+        <div id="rrows"></div>
+        <div class="raddons" id="raddons"></div>
+      </div>
+      <ul class="rterms" id="rterms"></ul>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
     <div class="wrap">
       <div>
@@ -346,7 +387,7 @@ dialog::backdrop{background:rgba(5,9,9,.95)}
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <script>
 const T = {
-  en:{nav_work:"Work",nav_services:"Services",nav_contact:"Contact",edition:"night edition",production:"An Oneiros Studio production",h1:"Watch<br>to the end",
+  en:{nav_work:"Work",nav_services:"Services",nav_rates:"Rates",rates:"Rate card",rates_s:"pick your line, then DM us",h_addons:"Add-ons",nav_contact:"Contact",edition:"night edition",production:"An Oneiros Studio production",h1:"Watch<br>to the end",
       hero:"Launch teasers, lessons and short films. Every project starts like a film: a story, a look, a sound.",tags:"EDIT · MOTION DESIGN · GRADE · SOUND",reel:"Watch the showreel",
       n_hook:"the hook lands here ↓",n_nora:"she doesn't exist",clip_l:"The cut — an Oneiros paper",clip_r:"Read to the end",banner:"Studio makes videos people actually finish",
       clip_p:"neiros edits launch teasers for web3 projects, lessons for course creators and short films for brands. One rule: if a viewer leaves, the edit failed.",
@@ -359,7 +400,7 @@ const T = {
       all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Courses & VSL",anim:"Animation",
       client:"Client",spec:"Spec",test:"Editing test",perso:"Personal project",studio:"Studio",
       sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation"},
-  fr:{nav_work:"Travaux",nav_services:"Services",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Vu<br>jusqu'au bout",
+  fr:{nav_work:"Travaux",nav_services:"Services",nav_rates:"Tarifs",rates:"Tarifs",rates_s:"choisissez votre ligne, puis écrivez-nous",h_addons:"Options",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Vu<br>jusqu'au bout",
       hero:"Teasers de lancement, cours et courts-métrages. Chaque projet commence comme un film : une histoire, une image, un son.",tags:"MONTAGE · MOTION DESIGN · ÉTALONNAGE · SON",reel:"Voir le showreel",
       n_hook:"l'accroche tombe ici ↓",n_nora:"elle n'existe pas",clip_l:"Le cut — le journal d'Oneiros",clip_r:"À lire jusqu'au bout",banner:"Un studio fait des vidéos qu'on regarde en entier",
       clip_p:"neiros monte des teasers de lancement pour des projets web3, des cours pour des créateurs et des courts-métrages pour des marques. Une seule règle : si le spectateur part, le montage a échoué.",
@@ -413,6 +454,18 @@ const SVC = [
  {en:["AI films","Scenes without a shoot. Presenters who never miss a take."],fr:["Films IA","Des scènes sans tournage. Des présentateurs qui ne ratent jamais une prise."]},
  {en:["Sound design","SFX timed to the frame. Hear it to believe it."],fr:["Sound design","Des effets sonores calés à l'image près. À écouter pour y croire."]},
 ];
+/* tarifs : mêmes données que les fiches d'offre (Oneiros/generate.py) — anglais en USD, français en euros, la crypto en USD */
+const RATES = [{"key": "launch", "label": {"en": "Launches", "fr": "Lancements"}, "who": {"en": "web3 projects", "fr": "projets web3"}, "items": [{"name": {"en": "TEASER", "fr": "TEASER"}, "price": {"en": "$400", "fr": "400 $"}, "desc": {"en": "10–15 s · 1 format (16:9 or 9:16) · music and sound design", "fr": "10–15 s · 1 format (16:9 ou 9:16) · musique et sound design"}, "rev": {"en": "1 revision round", "fr": "1 retour"}, "reco": false}, {"name": {"en": "LAUNCH TRAILER", "fr": "TRAILER DE LANCEMENT"}, "price": {"en": "$1,200", "fr": "1 200 $"}, "desc": {"en": "30–45 s · 16:9 and 9:16 · script, sound design, end card", "fr": "30–45 s · 16:9 et 9:16 · script, sound design, carte de fin"}, "rev": {"en": "2 revision rounds", "fr": "2 retours"}, "reco": false}, {"name": {"en": "LAUNCH PACK", "fr": "PACK LANCEMENT"}, "price": {"en": "$2,000", "fr": "2 000 $"}, "desc": {"en": "1 trailer + 3 teasers: announcement, countdown, “live now”", "fr": "1 trailer + 3 teasers : annonce, compte à rebours, « live now »"}, "rev": {"en": "2 revision rounds per video", "fr": "2 retours par vidéo"}, "reco": true}, {"name": {"en": "MONTHLY", "fr": "MENSUEL"}, "price": {"en": "$1,400", "fr": "1 400 $"}, "desc": {"en": "4 short videos per month · priority scheduling", "fr": "4 vidéos courtes par mois · priorité sur le planning"}, "rev": {"en": "billed monthly · 2-month minimum", "fr": "prix par mois · engagement de 2 mois minimum"}, "reco": false}], "addons": [{"name": {"en": "Extra format (1:1, animated banner…)", "fr": "Format supplémentaire (1:1, bannière animée…)"}, "price": {"en": "+$100 per video", "fr": "+100 $ par vidéo"}}, {"name": {"en": "Extra revision round", "fr": "Retour supplémentaire"}, "price": {"en": "+$100", "fr": "+100 $"}}, {"name": {"en": "Voiceover or another language", "fr": "Voix off ou version dans une autre langue"}, "price": {"en": "+$150", "fr": "+150 $"}}], "terms": {"en": ["50% deposit upfront, balance before final files are delivered.", "Teaser only: full payment upfront.", "All payments in USD. No crypto accepted.", "Free use for the client; shown in our portfolio after launch."], "fr": ["Acompte de 50 % au démarrage, solde avant livraison des fichiers finaux.", "Teaser seul : paiement intégral à la commande.", "Paiements en USD uniquement. Aucune crypto acceptée.", "Usage libre pour le client ; diffusion en portfolio après le lancement."]}}, {"key": "courses", "label": {"en": "Courses & VSL", "fr": "Cours & VSL"}, "who": {"en": "course creators, coaches", "fr": "créateurs de cours, coachs"}, "items": [{"name": {"en": "LESSON — CLEAN EDIT", "fr": "LEÇON — MONTAGE SIMPLE"}, "price": {"en": "$250", "fr": "250 €"}, "desc": {"en": "Up to 10 min edited · cuts, captions, sound clean-up", "fr": "Jusqu'à 10 min montées · coupes, sous-titres, nettoyage du son"}, "rev": {"en": "1 revision round", "fr": "1 retour"}, "reco": false}, {"name": {"en": "LESSON — WITH MOTION DESIGN", "fr": "LEÇON — AVEC MOTION DESIGN"}, "price": {"en": "$450", "fr": "450 €"}, "desc": {"en": "Up to 10 min edited · cuts, captions, sound, 3–5 animations", "fr": "Jusqu'à 10 min montées · coupes, sous-titres, son, 3 à 5 animations"}, "rev": {"en": "1 revision round", "fr": "1 retour"}, "reco": false}, {"name": {"en": "10-LESSON PACK", "fr": "PACK 10 LEÇONS"}, "price": {"en": "$4,000", "fr": "4 000 €"}, "desc": {"en": "10 lessons with motion design, one consistent style across the course", "fr": "10 leçons avec motion design, un même style sur tout le cours"}, "rev": {"en": "1 revision round per lesson", "fr": "1 retour par leçon"}, "reco": true}, {"name": {"en": "VSL", "fr": "VSL"}, "price": {"en": "$1,000", "fr": "1 000 €"}, "desc": {"en": "3–6 min sales video · motion design, captions, sound design", "fr": "Vidéo de vente de 3 à 6 min · motion design, sous-titres, sound design"}, "rev": {"en": "2 revision rounds", "fr": "2 retours"}, "reco": false}, {"name": {"en": "MONTHLY", "fr": "MENSUEL"}, "price": {"en": "$2,400", "fr": "2 400 €"}, "desc": {"en": "4 lessons with motion design + 8 short-form clips per month", "fr": "4 leçons avec motion design + 8 formats courts par mois"}, "rev": {"en": "billed monthly · 2-month minimum", "fr": "prix par mois · engagement de 2 mois minimum"}, "reco": false}], "addons": [{"name": {"en": "Extra format (9:16 or 1:1)", "fr": "Format supplémentaire (9:16 ou 1:1)"}, "price": {"en": "+$100 per video", "fr": "+100 € par vidéo"}}, {"name": {"en": "Extra revision round", "fr": "Retour supplémentaire"}, "price": {"en": "+$100", "fr": "+100 €"}}], "terms": {"en": ["50% deposit upfront, balance before final files are delivered.", "All payments in USD. No crypto accepted.", "Free use for the client; shown in our portfolio only with your agreement."], "fr": ["Acompte de 50 % au démarrage, solde avant livraison des fichiers finaux.", "Paiements en euros. Aucune crypto acceptée.", "Usage libre pour le client ; diffusion en portfolio seulement avec votre accord."]}}, {"key": "shorts", "label": {"en": "Short-form", "fr": "Formats courts"}, "who": {"en": "Reels · TikTok · Shorts", "fr": "Reels · TikTok · Shorts"}, "items": [{"name": {"en": "SHORT-FORM CLIP", "fr": "FORMAT COURT"}, "price": {"en": "$120", "fr": "120 €"}, "desc": {"en": "Up to 60 s from your footage · animated captions, b-roll, SFX", "fr": "Jusqu'à 60 s à partir de vos rushs · sous-titres animés, plans d'illustration, effets sonores"}, "rev": {"en": "1 revision round", "fr": "1 retour"}, "reco": false}, {"name": {"en": "PACK OF 10", "fr": "PACK DE 10"}, "price": {"en": "$1,000", "fr": "1 000 €"}, "desc": {"en": "10 clips in one consistent style", "fr": "10 formats courts dans un même style"}, "rev": {"en": "1 revision round per clip", "fr": "1 retour par vidéo"}, "reco": true}, {"name": {"en": "MONTHLY", "fr": "MENSUEL"}, "price": {"en": "$2,000", "fr": "2 000 €"}, "desc": {"en": "20 short-form clips per month", "fr": "20 formats courts par mois"}, "rev": {"en": "billed monthly · 2-month minimum", "fr": "prix par mois · engagement de 2 mois minimum"}, "reco": false}], "addons": [], "terms": {"en": ["50% deposit upfront, balance before final files are delivered.", "All payments in USD. No crypto accepted.", "Free use for the client; shown in our portfolio only with your agreement."], "fr": ["Acompte de 50 % au démarrage, solde avant livraison des fichiers finaux.", "Paiements en euros. Aucune crypto acceptée.", "Usage libre pour le client ; diffusion en portfolio seulement avec votre accord."]}}, {"key": "ai", "label": {"en": "AI films & brands", "fr": "Films IA & marques"}, "who": {"en": "no shoot needed", "fr": "sans tournage"}, "items": [{"name": {"en": "AI AD", "fr": "PUB IA"}, "price": {"en": "$900", "fr": "900 €"}, "desc": {"en": "15–30 s · AI visuals, edit, sound design · 16:9 or 9:16", "fr": "15 à 30 s · visuels IA, montage, sound design · 16:9 ou 9:16"}, "rev": {"en": "2 revision rounds", "fr": "2 retours"}, "reco": true}, {"name": {"en": "BRAND FILM / AI SHORT FILM", "fr": "FILM DE MARQUE / COURT IA"}, "price": {"en": "from $1,800", "fr": "dès 1 800 €"}, "desc": {"en": "Up to 2 min · story, AI visuals, edit, sound design", "fr": "Jusqu'à 2 min · histoire, visuels IA, montage, sound design"}, "rev": {"en": "2 revision rounds", "fr": "2 retours"}, "reco": false}, {"name": {"en": "SOUND DESIGN ONLY", "fr": "SOUND DESIGN SEUL"}, "price": {"en": "$150", "fr": "150 €"}, "desc": {"en": "On your edit, up to 60 s · SFX and mix", "fr": "Sur votre montage, jusqu'à 60 s · effets sonores et mixage"}, "rev": {"en": "1 revision round", "fr": "1 retour"}, "reco": false}], "addons": [{"name": {"en": "Extra format (1:1, 9:16, 16:9)", "fr": "Format supplémentaire (1:1, 9:16, 16:9)"}, "price": {"en": "+$100 per video", "fr": "+100 € par vidéo"}}, {"name": {"en": "Extra revision round", "fr": "Retour supplémentaire"}, "price": {"en": "+$100", "fr": "+100 €"}}, {"name": {"en": "Voiceover or another language", "fr": "Voix off ou version dans une autre langue"}, "price": {"en": "+$150", "fr": "+150 €"}}], "terms": {"en": ["50% deposit upfront, balance before final files are delivered.", "All payments in USD. No crypto accepted.", "AI-generated visuals are labelled as AI where platforms require it.", "Free use for the client; shown in our portfolio only with your agreement."], "fr": ["Acompte de 50 % au démarrage, solde avant livraison des fichiers finaux.", "Paiements en euros. Aucune crypto acceptée.", "Les visuels générés par IA sont signalés comme tels quand les plateformes l'exigent.", "Usage libre pour le client ; diffusion en portfolio seulement avec votre accord."]}}];
+let rkey="launch";
+function rateCard(){
+  const tabs=$("#rtabs"); tabs.innerHTML="";
+  RATES.forEach(r=>{const b=document.createElement("button");b.setAttribute("role","tab");b.textContent=r.label[lang];b.setAttribute("aria-selected",r.key===rkey);b.onclick=()=>{rkey=r.key;rateCard()};tabs.appendChild(b)});
+  const r=RATES.find(x=>x.key===rkey);
+  $("#rtitle").textContent=r.label[lang]; $("#rwho").textContent=r.who[lang];
+  $("#rrows").innerHTML=r.items.map(i=>`<div class="rrow"><div class="rname">${i.name[lang]}${i.reco?`<span class="reco">${lang==="fr"?"Recommandé":"Recommended"}</span>`:""}</div><div class="rprice">${i.price[lang]}</div><p class="rdesc">${i.desc[lang]}<i>${i.rev[lang]}</i></p></div>`).join("");
+  $("#raddons").innerHTML=r.addons.length?`<h3>${T[lang].h_addons}</h3>`+r.addons.map(a=>`<div class="raddon"><span>${a.name[lang]}</span><b>${a.price[lang]}</b></div>`).join(""):"";
+  $("#rterms").innerHTML=r.terms[lang].map(t=>`<li>${t}</li>`).join("");
+}
 const CATS=["all","ads","vertical","fiction","vsl","anim"];
 const TILT=[-1.6,1.2,-.6,1.8,-1.1,.8];
 let lang = (navigator.language||"en").slice(0,2)==="fr" ? "fr" : "en";
@@ -484,6 +537,7 @@ function render(){
   const s=$("#svc"); s.innerHTML="";
   SVC.forEach(x=>{const d=document.createElement("div");d.className="svc";d.innerHTML=`<h3>${x[lang][0]}</h3><p>${x[lang][1]}</p>`;s.appendChild(d)});
   phones();
+  rateCard();
 }
 function openLB(id,title,desc){
   document.querySelectorAll("#phones video").forEach(v=>v.pause());

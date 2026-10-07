@@ -53,6 +53,7 @@ nav .hand{font-size:24px;letter-spacing:0}
 .hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,22,22,.94) 0%,rgba(12,22,22,.62) 48%,rgba(12,22,22,.3) 100%),linear-gradient(180deg,rgba(12,22,22,.55) 0%,transparent 30%,rgba(12,22,22,.96) 100%)}
 .hero-txt{position:absolute;left:var(--pad);bottom:clamp(56px,9vh,90px);width:min(700px,50vw);display:flex;flex-direction:column;gap:20px}
 .hero h1{font-family:var(--display);font-weight:900;font-size:clamp(84px,13.6vw,196px);line-height:.8;color:var(--gold);text-transform:uppercase}
+html[lang="fr"] .hero h1{line-height:.94;font-size:clamp(76px,11.2vw,160px)}
 .hero-txt p{max-width:520px;font-size:19px}
 .hero-txt .tags{font-size:13px;letter-spacing:.16em;opacity:.72}
 .play-btn{align-self:flex-start;display:flex;align-items:center;gap:14px;font:inherit;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(7,13,13,.6);border:1px solid var(--gold);padding:8px 22px 8px 8px;cursor:pointer;transition:background .2s,color .2s}
@@ -400,7 +401,7 @@ const T = {
       all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Courses & VSL",anim:"Animation",
       client:"Client",spec:"Spec",test:"Editing test",perso:"Personal project",studio:"Studio",
       sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation"},
-  fr:{nav_work:"Travaux",nav_services:"Services",nav_rates:"Tarifs",rates:"Tarifs",rates_s:"choisissez votre ligne, puis écrivez-nous",h_addons:"Options",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Vu<br>jusqu'au bout",
+  fr:{nav_work:"Travaux",nav_services:"Services",nav_rates:"Tarifs",rates:"Tarifs",rates_s:"choisissez votre ligne, puis écrivez-nous",h_addons:"Options",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Personne<br>ne décroche",
       hero:"Teasers de lancement, cours et courts-métrages. Chaque projet commence comme un film : une histoire, une image, un son.",tags:"MONTAGE · MOTION DESIGN · ÉTALONNAGE · SON",reel:"Voir le showreel",
       n_hook:"l'accroche tombe ici ↓",n_nora:"elle n'existe pas",clip_l:"Le cut — le journal d'Oneiros",clip_r:"À lire jusqu'au bout",banner:"Un studio fait des vidéos qu'on regarde en entier",
       clip_p:"neiros monte des teasers de lancement pour des projets web3, des cours pour des créateurs et des courts-métrages pour des marques. Une seule règle : si le spectateur part, le montage a échoué.",

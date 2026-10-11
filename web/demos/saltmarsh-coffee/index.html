@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saltmarsh Coffee Co. — Demo by Oneiros Studio</title>
+<meta name="description" content="Demo website for a fictional specialty coffee shop on the South Carolina coast, designed by Oneiros Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --shell:#f7f4ee;      /* off-white */
+  --sand:#ece3d3;       /* dry sand */
+  --sand-2:#e2d6c0;
+  --glass:#a9c7c5;      /* sea glass */
+  --glass-soft:#d6e6e3;
+  --sea:#2f5a63;        /* deep sea glass */
+  --sea-deep:#1f3f46;
+  --ochre:#c0873a;
+  --ochre-soft:#e2b877;
+  --ink:#1d2a2d;
+  --mute:#5f6b69;
+  --line:rgba(29,42,45,.14);
+  --wrap:1280px;
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12' viewBox='0 0 48 12'%3E%3Cpath d='M0 6 Q12 0 24 6 T48 6' fill='none' stroke='%23c0873a' stroke-width='1.3'/%3E%3C/svg%3E");
+  --wave-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12' viewBox='0 0 48 12'%3E%3Cpath d='M0 6 Q12 0 24 6 T48 6' fill='none' stroke='%23a9c7c5' stroke-width='1.3'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--shell);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sea)}
+.eyebrow::before{content:"";width:34px;height:10px;background:var(--wave) repeat-x center/24px 6px}
+.h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(44px,5.4vw,80px);line-height:.98;letter-spacing:-.015em}
+.h2 em{font-style:italic;color:var(--sea)}
+.lead{color:var(--mute);font-size:17px;max-width:460px}
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:var(--sea);color:var(--shell);padding:15px 26px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.01em;transition:background .25s,transform .25s}
+.btn:hover{background:var(--sea-deep);transform:translateY(-1px)}
+.btn svg{width:16px;height:16px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--shell)}
+.btn.ochre{background:var(--ochre-soft);color:var(--ink)}
+.btn.ochre:hover{background:#ebc68e}
+
+/* ---------- header ---------- */
+header{position:absolute;inset:0 0 auto 0;z-index:20}
+nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0}
+.logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logo svg{width:40px;height:40px;flex:none}
+.logo b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-style:italic;font-size:30px;line-height:.9;letter-spacing:-.01em}
+.logo small{display:block;font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.links{display:flex;gap:34px;font-size:14px;font-weight:600}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--ochre);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover::after{transform:scaleX(1)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.08fr 1fr;min-height:100vh;min-height:max(100vh,760px)}
+.hero-txt{display:flex;flex-direction:column;justify-content:center;padding:150px 72px 80px max(40px,calc((100vw - var(--wrap))/2 + 40px))}
+.hero h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(58px,7.4vw,118px);line-height:.92;letter-spacing:-.025em;margin:26px 0 30px}
+.hero h1 em{color:var(--sea)}
+.hero h1 .amp{color:var(--ochre)}
+.hero .lead{font-size:18px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:56px;padding-top:26px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
+.hero-meta strong{display:block;color:var(--ink);font-size:14px;font-weight:700}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5fa58f;margin-right:8px;box-shadow:0 0 0 4px rgba(95,165,143,.18);vertical-align:1px}
+.hero-art{position:relative;background:var(--glass-soft);display:flex;align-items:flex-end;justify-content:center;padding:120px 56px 0;overflow:hidden}
+.hero-art::before{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;background:var(--sand)}
+.hero-art .sun{position:absolute;top:30%;left:4%;width:150px;height:150px;border-radius:50%;background:var(--ochre-soft);opacity:.6}
+.arch{position:relative;z-index:1;width:min(100%,520px);height:min(78vh,700px);border-radius:300px 300px 0 0;overflow:hidden;box-shadow:0 30px 80px -30px rgba(31,63,70,.45)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.rating{position:absolute;z-index:2;left:22px;bottom:48px;background:var(--shell);border-radius:20px;padding:16px 20px 16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 18px 50px -12px rgba(29,42,45,.35)}
+.rating strong{font-family:"Instrument Serif",serif;font-weight:400;font-size:46px;line-height:.8}
+.stars{color:var(--ochre);letter-spacing:2px;font-size:14px;line-height:1}
+.rating small{display:block;font-size:12px;color:var(--mute);margin-top:6px}
+.stamp{position:absolute;z-index:2;right:4%;top:150px;width:128px;height:128px;color:var(--sea);filter:drop-shadow(0 10px 24px rgba(31,63,70,.18))}
+.stamp text{font-family:Manrope;font-size:10.4px;font-weight:700;letter-spacing:.24em;fill:currentColor}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--sea);color:var(--glass-soft);overflow:hidden;white-space:nowrap;padding:20px 0}
+.ticker-track{display:inline-flex;align-items:center;animation:slide 40s linear infinite}
+.ticker span{font-family:"Instrument Serif",serif;font-style:italic;font-size:28px;padding:0 26px;line-height:1}
+.ticker i{display:inline-block;width:40px;height:10px;background:var(--wave-light) repeat-x center/24px 6px;opacity:.7}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- menu ---------- */
+.menu{padding:140px 0 130px}
+.menu-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
+.menu-head .lead{justify-self:end}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink)}
+.col{padding:34px 30px 10px;border-right:1px solid var(--line)}
+.col:first-child{padding-left:0}
+.col:last-child{border-right:0;padding-right:0}
+.col h3{display:flex;align-items:baseline;justify-content:space-between;font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;line-height:1;margin-bottom:6px}
+.col h3 span{font-family:Manrope;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--ochre)}
+.col .note{font-size:13px;color:var(--mute);margin-bottom:22px}
+.item{padding:14px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border-bottom:0}
+.item .row{display:flex;align-items:baseline;gap:10px;font-weight:700;font-size:15px}
+.item .row::after{content:"";order:1;flex:1;border-bottom:1px dotted rgba(29,42,45,.3);transform:translateY(-4px)}
+.item .row b{order:2;font-weight:600;font-variant-numeric:tabular-nums;color:var(--sea)}
+.item p{font-size:13px;color:var(--mute);line-height:1.5;margin-top:3px}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--ochre-soft);color:var(--ink);padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:2px}
+.menu-foot{display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:28px;margin-top:70px}
+.menu-photo{position:relative;border-radius:28px;overflow:hidden;height:420px}
+.menu-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.menu-photo.swan img{object-position:42% 55%}
+.menu-photo figcaption{position:absolute;left:24px;bottom:22px;background:rgba(247,244,238,.94);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600}
+.extras{background:var(--sand);border-radius:28px;padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.extras h4{font-family:"Instrument Serif",serif;font-weight:400;font-size:36px;line-height:1.05}
+.extras h4 em{color:var(--sea)}
+.extras ul{list-style:none;font-size:14px}
+.extras li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(29,42,45,.12)}
+.extras li:last-child{border:0}
+.extras li span:last-child{color:var(--mute);text-align:right}
+
+/* ---------- roast ---------- */
+.roast{background:var(--sea-deep);color:var(--shell);padding:140px 0;position:relative;overflow:hidden}
+.roast .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:stretch}
+.roast .eyebrow{color:var(--glass)}
+.roast .eyebrow::before{background-image:var(--wave-light)}
+.roast .h2 em{color:var(--ochre-soft)}
+.roast .lead{color:#b9cccb;margin-top:26px;max-width:540px}
+.roast-photo{position:relative;border-radius:28px;overflow:hidden;min-height:660px}
+.roast-photo img{position:absolute;inset:0}
+.roast-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.9)}
+.roast-photo .chip{position:absolute;right:20px;top:20px;background:var(--ochre-soft);color:var(--ink);border-radius:999px;padding:9px 16px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.beans{margin-top:46px;border-top:1px solid rgba(214,230,227,.2)}
+.bean{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:start;padding:24px 0;border-bottom:1px solid rgba(214,230,227,.2)}
+.bean .k{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glass);padding-top:8px}
+.bean h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:30px;line-height:1.1}
+.bean p{font-size:14px;color:#b9cccb;margin-top:4px}
+.notes{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:270px;padding-top:6px}
+.notes span{font-size:12px;border:1px solid rgba(214,230,227,.35);border-radius:999px;padding:4px 10px;color:var(--glass-soft)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.facts div{font-size:13px;color:#b9cccb}
+.facts strong{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:44px;line-height:1;color:var(--shell);margin-bottom:6px}
+
+/* ---------- room ---------- */
+.room{padding:140px 0}
+.room .grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:28px}
+.room .intro{grid-column:1/2;align-self:end;padding-bottom:10px}
+.room .intro .lead{margin-top:24px}
+.room .wide{grid-column:2/4;grid-row:1/3;border-radius:28px;overflow:hidden;min-height:640px;position:relative}
+.room .wide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;transform:scale(1.35);transform-origin:50% 62%}
+.room .wide .cap{position:absolute;left:24px;bottom:24px;right:24px;display:flex;justify-content:space-between;align-items:end;gap:20px;color:#fff}
+.room .wide .cap span{font-family:"Instrument Serif",serif;font-style:italic;font-size:34px;line-height:1.05;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.room .wide .cap small{background:rgba(247,244,238,.94);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;white-space:nowrap}
+.room .wide::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(16,32,36,.55))}
+.room .wide .cap{z-index:2}
+.perks{grid-column:1/2;list-style:none;border-top:1px solid var(--ink)}
+.perks li{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.perks li b{display:block;font-size:15px}
+.perks li span{color:var(--mute)}
+.perks svg{flex:none;width:34px;height:34px;color:var(--sea);margin-top:2px}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--sand);padding:130px 0;position:relative}
+.reviews-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+.score{display:flex;align-items:center;gap:18px;background:var(--shell);border-radius:22px;padding:18px 24px}
+.score strong{font-family:"Instrument Serif",serif;font-weight:400;font-size:62px;line-height:.8}
+.score small{display:block;font-size:13px;color:var(--mute);margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--shell);border-radius:26px;padding:36px 34px 30px;display:flex;flex-direction:column;justify-content:space-between;gap:34px}
+.card .q{font-family:"Instrument Serif",serif;font-size:26px;line-height:1.22}
+.card .q::before{content:"“";display:block;font-size:70px;line-height:.6;color:var(--ochre);margin-bottom:10px}
+.who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mute);padding-top:20px;border-top:1px solid var(--line)}
+.who .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--shell);background:var(--sea);font-size:14px}
+.who b{display:block;color:var(--ink);font-size:14px}
+.who .g{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.card:nth-child(2) .av{background:var(--ochre)}
+.card:nth-child(3) .av{background:#7fa7a4}
+
+/* ---------- visit ---------- */
+.visit{padding:140px 0 120px}
+.visit .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:stretch}
+.visit .h2{margin:22px 0 36px}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:14px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today td{font-weight:700}
+.hours tr.today td:first-child::after{content:"Today";margin-left:10px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--glass-soft);color:var(--sea);border-radius:999px;padding:3px 9px;vertical-align:2px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.contact .k{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);margin-bottom:8px}
+.contact p{font-size:15px}
+.contact .big{font-family:"Instrument Serif",serif;font-size:26px;line-height:1.2}
+.contact a:hover{color:var(--sea)}
+.visit .ctas{margin-top:40px}
+.map{position:relative;border-radius:28px;overflow:hidden;background:var(--glass-soft);min-height:560px}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .pin-card{position:absolute;left:24px;top:24px;background:var(--shell);border-radius:18px;padding:16px 20px;box-shadow:0 14px 40px -14px rgba(29,42,45,.35);font-size:13px;color:var(--mute);max-width:260px}
+.map .pin-card b{display:block;color:var(--ink);font-size:15px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#c9d3d1;padding:110px 0 90px;overflow:hidden}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:70px}
+.foot-top .k{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--glass);margin-bottom:14px}
+.foot-top a{display:block;font-size:14.5px;padding:3px 0}
+.foot-top a:hover{color:var(--shell)}
+.foot-top .pitch{font-family:"Instrument Serif",serif;font-size:32px;line-height:1.1;color:var(--shell)}
+.foot-top .pitch em{color:var(--ochre-soft)}
+.wordmark{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(90px,17vw,270px);line-height:.8;letter-spacing:-.03em;color:var(--shell);white-space:nowrap;text-align:center;padding:10px 0 34px}
+.wordmark span{color:var(--glass)}
+.foot-wave{height:12px;background:var(--wave-light) repeat-x center/48px 12px;opacity:.5;margin-bottom:28px}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;font-size:12.5px;color:#8c9997}
+
+/* ---------- demo badge ---------- */
+.demo-badge{position:fixed;left:16px;bottom:16px;z-index:100;display:inline-flex;align-items:center;gap:9px;max-width:calc(100vw - 32px);background:rgba(29,42,45,.92);color:#f7f4ee;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(247,244,238,.18);border-radius:999px;padding:8px 15px 8px 11px;font-size:12px;font-weight:600;line-height:1.3;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);transition:background .25s}
+.demo-badge:hover{background:var(--sea-deep)}
+.demo-badge i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--ochre-soft)}
+.demo-badge u{text-decoration:none;color:var(--ochre-soft)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .menu-foot{grid-template-columns:1fr 1fr}
+  .extras{grid-column:1/-1}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .col{padding:34px 28px 10px}
+  .col:nth-child(2){border-right:0;padding-right:0}
+  .col:nth-child(3){padding-left:0;border-top:1px solid var(--line)}
+  .col:nth-child(4){border-top:1px solid var(--line)}
+  .roast .grid{gap:56px}
+  .bean{grid-template-columns:1fr auto}
+  .bean .k{grid-column:1/-1;padding:0}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .links{gap:24px}
+}
+@media (max-width:860px){
+  .wrap{padding:0 20px}
+  .links{display:none}
+  nav{padding:18px 0}
+  .logo svg{width:34px;height:34px}
+  .logo b{font-size:25px}
+  .logo small{font-size:8.5px;letter-spacing:.28em}
+  nav .btn{padding:11px 18px;font-size:13px}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-txt{padding:118px 20px 48px}
+  .hero h1{font-size:clamp(52px,15vw,76px);margin:20px 0 22px}
+  .hero .lead{font-size:16px}
+  .ctas{margin-top:30px;gap:10px}
+  .ctas .btn{padding:14px 22px}
+  .hero-meta{display:none}
+  .hide-m{display:none}
+  .hero-art{padding:60px 20px 0;min-height:0}
+  .arch{height:500px;width:100%}
+  .stamp{right:14px;top:22px;width:104px;height:104px}
+  .rating{left:12px;bottom:26px;padding:12px 16px}
+  .rating strong{font-size:38px}
+  .hero-art .sun{top:30px;left:16px;right:auto;width:80px;height:80px}
+  .ticker{padding:16px 0}
+  .ticker span{font-size:22px;padding:0 18px}
+  .menu,.room,.visit{padding:90px 0}
+  .menu-head{grid-template-columns:1fr;gap:22px;margin-bottom:44px}
+  .menu-head .lead{justify-self:start}
+  .menu-grid{grid-template-columns:1fr}
+  .col,.col:first-child,.col:last-child,.col:nth-child(2),.col:nth-child(3){padding:30px 0 6px;border-right:0;border-top:1px solid var(--line)}
+  .col:first-child{border-top:0}
+  .menu-foot{grid-template-columns:1fr;margin-top:40px;gap:20px}
+  .menu-foot{grid-template-columns:1fr 1fr}
+  .menu-photo{height:260px}
+  .menu-photo figcaption{left:12px;bottom:12px;font-size:12px;padding:7px 12px}
+  .extras{grid-column:1/-1}
+  .extras{padding:30px 24px}
+  .roast{padding:90px 0}
+  .roast .grid{grid-template-columns:1fr;gap:44px}
+  .roast-photo{min-height:440px}
+  .facts{grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .facts strong{font-size:34px}
+  .notes{justify-content:flex-start;max-width:none;grid-column:1/-1}
+  .bean{grid-template-columns:1fr;gap:10px}
+  .room .grid{grid-template-columns:1fr;gap:24px}
+  .room .intro,.perks,.room .wide{grid-column:1;grid-row:auto}
+  .room .wide{min-height:440px}
+  .room .wide .cap{flex-direction:column;align-items:flex-start;gap:12px}
+  .room .wide .cap span{font-size:28px}
+  .reviews{padding:90px 0}
+  .reviews-head{flex-direction:column;align-items:flex-start;gap:28px;margin-bottom:40px}
+  .cards{grid-template-columns:1fr;gap:16px}
+  .card{padding:30px 26px 24px}
+  .card .q{font-size:23px}
+  .visit .grid{grid-template-columns:1fr;gap:44px}
+  .contact{grid-template-columns:1fr;gap:22px}
+  .map{min-height:460px}
+  .map .pin-card{left:14px;top:14px;right:14px;max-width:none;padding:13px 16px}
+  footer{padding:80px 0 96px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:34px 24px;padding-bottom:50px}
+  .foot-top > div:first-child{grid-column:1/-1}
+  .foot-bottom{flex-direction:column;gap:6px}
+  .demo-badge{left:10px;bottom:10px;font-size:11px;padding:7px 12px 7px 10px;gap:7px}
+  .demo-badge .long{display:none}
+}
+@media (max-width:400px){
+  .hide-xs{display:none}
+  .facts strong{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+</style>
+</head>
+<body>
+
+<a class="demo-badge" href="../../" title="Back to the Oneiros Studio portfolio"><i></i><span>Demo website<span class="long"> · fictional business</span> — by <u>Oneiros Studio</u></span></a>
+
+<header><div class="wrap"><nav>
+  <a class="logo" href="#top" aria-label="Saltmarsh Coffee Co. home">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="#2f5a63" stroke-width="1.4"/><circle cx="20" cy="15" r="5.5" fill="#e2b877"/><path d="M6 22.5c2.3-2 4.7-2 7 0s4.7 2 7 0 4.7-2 7 0 4.7 2 7 0" stroke="#2f5a63" stroke-width="1.5" stroke-linecap="round"/><path d="M8 28c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0 4 1.6 6 0" stroke="#2f5a63" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg>
+    <span><b>Saltmarsh</b><small>Coffee Co.</small></span>
+  </a>
+  <div class="links"><a href="#menu">Menu</a><a href="#beans">Our beans</a><a href="#room">The room</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a></div>
+  <a class="btn" href="#menu">Order ahead<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</nav></div></header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-txt">
+    <span class="eyebrow"><span><span class="hide-m">Specialty coffee · </span>Palmetto Bay, SC</span></span>
+    <h1>Slow mornings, <em>salt air</em> <span class="amp">&amp;</span> a very good cup.</h1>
+    <p class="lead">A small coffee bar on Harbor Walk with a window full of marsh and sea. Espresso pulled with care, pour-overs by the cup, and pastries from bakers down the street.</p>
+    <div class="ctas">
+      <a class="btn" href="#menu">Order ahead<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn ghost" href="#menu">See the menu</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong><span class="dot"></span>Open daily</strong>Mon–Sat 6:30am–4pm · Sun 7am–2pm</div>
+      <div><strong>8 Harbor Walk</strong>On the boardwalk, facing the marsh</div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <span class="sun" aria-hidden="true"></span>
+    <svg class="stamp" viewBox="0 0 128 128" aria-hidden="true">
+      <defs><path id="circ" d="M64 64m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs>
+      <circle cx="64" cy="64" r="62" fill="#f7f4ee"/>
+      <text><textPath href="#circ">POURED SLOW · BY THE SEA · SINCE 2019 ·</textPath></text>
+      <path d="M44 66c3.4-3 6.6-3 10 0s6.6 3 10 0 6.6-3 10 0 6.6 3 10 0" fill="none" stroke="#c0873a" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <div class="arch"><img src="img/hero.jpg" alt="Sunlit café room with hanging bulbs and a wide window over the water"></div>
+    <div class="rating"><strong>4.8</strong><div><div class="stars">★★★★★</div><small>286 Google reviews</small></div></div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>Espresso bar</span><i></i><span>Pour-over by the cup</span><i></i><span>16-hour cold brew</span><i></i><span>Local bakes</span><i></i><span>A window on the marsh</span><i></i>
+  <span>Espresso bar</span><i></i><span>Pour-over by the cup</span><i></i><span>16-hour cold brew</span><i></i><span>Local bakes</span><i></i><span>A window on the marsh</span><i></i>
+</div></div>
+
+<!-- MENU -->
+<section class="menu" id="menu"><div class="wrap">
+  <div class="menu-head">
+    <div>
+      <span class="eyebrow">The menu</span>
+      <h2 class="h2" style="margin-top:20px">Short list,<br><em>long finish.</em></h2>
+    </div>
+    <p class="lead">Everything is made to order at the bar. Order ahead and we'll have it waiting at the pickup shelf — or stay a while, the window seats are first come, first served.</p>
+  </div>
+
+  <div class="menu-grid">
+    <div class="col">
+      <h3>Espresso bar <span>HOT</span></h3>
+      <p class="note">Harbor Blend or guest single origin</p>
+      <div class="item"><div class="row">Espresso<b>$3.50</b></div><p>Double shot, 18g in</p></div>
+      <div class="item"><div class="row">Cortado<b>$4.25</b></div><p>Equal parts espresso &amp; steamed milk</p></div>
+      <div class="item"><div class="row">Cappuccino<b>$4.75</b></div><p>8 oz, dense and silky</p></div>
+      <div class="item"><div class="row">Latte<b>$5.25</b></div><p>12 oz · iced on request</p></div>
+      <div class="item"><div class="row"><span>Salted honey latte<span class="tag">House</span></span><b>$6.25</b></div><p>Local wildflower honey, a pinch of sea salt</p></div>
+    </div>
+    <div class="col">
+      <h3>Slow coffee <span>BREW</span></h3>
+      <p class="note">Brewed by hand, one cup at a time</p>
+      <div class="item"><div class="row">Batch brew<b>$3.25</b></div><p>Today's filter, free refills to stay</p></div>
+      <div class="item"><div class="row">Pour-over<b>$5.50</b></div><p>V60, choose from three origins</p></div>
+      <div class="item"><div class="row">Chemex for two<b>$11.00</b></div><p>24 oz, served with two cups</p></div>
+      <div class="item"><div class="row">Tasting flight<b>$9.00</b></div><p>Three origins side by side, with notes</p></div>
+    </div>
+    <div class="col">
+      <h3>Cold <span>ICED</span></h3>
+      <p class="note">For long afternoons on the boardwalk</p>
+      <div class="item"><div class="row">Cold brew<b>$5.00</b></div><p>Steeped 16 hours, smooth &amp; chocolatey</p></div>
+      <div class="item"><div class="row">Nitro cold brew<b>$5.75</b></div><p>On tap, creamy without the cream</p></div>
+      <div class="item"><div class="row">Espresso tonic<b>$6.00</b></div><p>Tonic, orange peel, double shot</p></div>
+      <div class="item"><div class="row">Iced sweet-tea latte<b>$5.50</b></div><p>Black tea, cane sugar, oat milk</p></div>
+    </div>
+    <div class="col">
+      <h3>Bakes <span>DAILY</span></h3>
+      <p class="note">From Tidewater Bakehouse, two doors down</p>
+      <div class="item"><div class="row">Butter croissant<b>$4.25</b></div><p>Baked every morning at 5</p></div>
+      <div class="item"><div class="row">Benne seed biscuit<b>$7.50</b></div><p>Country ham &amp; pimento cheese</p></div>
+      <div class="item"><div class="row">Peach hand pie<b>$5.00</b></div><p>Seasonal, while they last</p></div>
+      <div class="item"><div class="row">Sea-salt cookie<b>$3.50</b></div><p>Dark chocolate, flaky salt</p></div>
+    </div>
+  </div>
+
+  <div class="menu-foot">
+    <figure class="menu-photo"><img src="img/cappuccino.jpg" alt="Cappuccino with a rosetta in latte art"><figcaption>Cappuccino · $4.75</figcaption></figure>
+    <figure class="menu-photo swan"><img src="img/swan.jpg" alt="Latte with swan latte art in a blue cup, seen from above"><figcaption>Latte · $5.25</figcaption></figure>
+    <div class="extras">
+      <h4>Make it <em>yours.</em></h4>
+      <ul>
+        <li><span>Oat or almond milk</span><span>+ $0.75</span></li>
+        <li><span>Extra shot</span><span>+ $1.00</span></li>
+        <li><span>Vanilla, honey or lavender syrup</span><span>+ $0.75</span></li>
+        <li><span>Decaf</span><span>Always available</span></li>
+      </ul>
+      <a class="btn" href="#visit" style="align-self:flex-start">Order ahead for pickup</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- BEANS -->
+<section class="roast" id="beans"><div class="wrap grid">
+  <div class="roast-photo">
+    <img src="img/espresso.jpg" alt="Espresso machine and grinders on the coffee bar">
+    <span class="chip">Roasted weekly</span>
+  </div>
+  <div>
+    <span class="eyebrow">Our beans</span>
+    <h2 class="h2" style="margin-top:20px">Roasted small,<br><em>poured slow.</em></h2>
+    <p class="lead">We buy green coffee in small lots and roast it ourselves on a 12-kilo roaster in the back room, every Tuesday. Nothing sits on the shelf for long — most bags leave the shop within ten days of roasting.</p>
+    <div class="beans">
+      <div class="bean">
+        <span class="k">Espresso</span>
+        <div><h3>Harbor Blend</h3><p>Brazil Cerrado &amp; Colombia Huila</p></div>
+        <div class="notes"><span>Milk chocolate</span><span>Pecan</span><span>Orange</span></div>
+      </div>
+      <div class="bean">
+        <span class="k">Guest origin</span>
+        <div><h3>Ethiopia Guji</h3><p>Natural process · 2,100 m</p></div>
+        <div class="notes"><span>Peach</span><span>Jasmine</span><span>Black tea</span></div>
+      </div>
+      <div class="bean">
+        <span class="k">Decaf</span>
+        <div><h3>Colombia Tolima</h3><p>Sugarcane process</p></div>
+        <div class="notes"><span>Brown sugar</span><span>Red cherry</span></div>
+      </div>
+    </div>
+    <div class="facts">
+      <div><strong>12 kg</strong>batches, never more</div>
+      <div><strong>10 days</strong>max. off roast at the bar</div>
+      <div><strong>$18</strong>per 12 oz bag to take home</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ROOM -->
+<section class="room" id="room"><div class="wrap grid">
+  <div class="intro">
+    <span class="eyebrow">The room</span>
+    <h2 class="h2" style="margin-top:20px">A room with<br><em>a view.</em></h2>
+    <p class="lead">Twenty-two seats, one long window and a lot of light. Watch the tide roll in over the marsh grass while your pour-over drips.</p>
+  </div>
+  <figure class="wide">
+    <img src="img/hero.jpg" alt="Window seats overlooking the water">
+    <figcaption class="cap"><span>The best seat in town<br>faces the water.</span><small>Window bar · 8 seats</small></figcaption>
+  </figure>
+  <ul class="perks">
+    <li><svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="currentColor" stroke-width="1.2"/><path d="M8 19c1.5-1.4 3-1.4 4.5 0s3 1.4 4.5 0 3-1.4 4.5 0 3 1.4 4.5 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="17" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/></svg><div><b>Sunrise from the window bar</b><span>We open at 6:30, just in time.</span></div></li>
+    <li><svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="currentColor" stroke-width="1.2"/><path d="M11 15a9 9 0 0 1 12 0M13.5 18a5 5 0 0 1 7 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="17" cy="21.5" r="1.3" fill="currentColor"/></svg><div><b>Free Wi-Fi &amp; outlets</b><span>Laptops welcome on weekdays.</span></div></li>
+    <li><svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="currentColor" stroke-width="1.2"/><path d="M12 22c0-3 2.2-5 5-5s5 2 5 5c0 1.5-1.4 2-2.5 1.5-1.2-.5-3.8-.5-5 0-1.1.5-2.5 0-2.5-1.5z" stroke="currentColor" stroke-width="1.3"/><circle cx="11.5" cy="14.5" r="1.6" stroke="currentColor" stroke-width="1.2"/><circle cx="15" cy="11.5" r="1.6" stroke="currentColor" stroke-width="1.2"/><circle cx="19" cy="11.5" r="1.6" stroke="currentColor" stroke-width="1.2"/><circle cx="22.5" cy="14.5" r="1.6" stroke="currentColor" stroke-width="1.2"/></svg><div><b>Dogs welcome on the deck</b><span>Water bowl &amp; biscuits by the door.</span></div></li>
+  </ul>
+</div></section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews"><div class="wrap">
+  <div class="reviews-head">
+    <div>
+      <span class="eyebrow">Reviews</span>
+      <h2 class="h2" style="margin-top:20px">Kind words<br><em>from the regulars.</em></h2>
+    </div>
+    <div class="score"><strong>4.8</strong><div><div class="stars" style="font-size:17px">★★★★★</div><small>286 Google reviews</small></div></div>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <p class="q">The view alone would be worth the trip, but the cortado is honestly the best I've had between Charleston and Savannah.</p>
+      <div class="who"><span class="av">MR</span><div><b>Megan R.</b>Local Guide · 2 weeks ago</div><span class="g">Google</span></div>
+    </article>
+    <article class="card">
+      <p class="q">Sat at the window bar for two hours watching the tide come in. Friendly baristas, a perfect pour-over, and that benne biscuit…</p>
+      <div class="who"><span class="av">DK</span><div><b>Daniel K.</b>1 month ago</div><span class="g">Google</span></div>
+    </article>
+    <article class="card">
+      <p class="q">Our Saturday ritual. The salted honey latte is dangerous, and our pup gets a biscuit at the door every single time.</p>
+      <div class="who"><span class="av">PS</span><div><b>Priya &amp; Sam</b>3 weeks ago</div><span class="g">Google</span></div>
+    </article>
+  </div>
+</div></section>
+
+<!-- VISIT -->
+<section class="visit" id="visit"><div class="wrap grid">
+  <div>
+    <span class="eyebrow">Hours &amp; find us</span>
+    <h2 class="h2">Come for a cup,<br><em>stay for the tide.</em></h2>
+    <table class="hours" id="hours">
+      <tr data-d="1"><td>Monday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="2"><td>Tuesday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="3"><td>Wednesday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="4"><td>Thursday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="5"><td>Friday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="6"><td>Saturday</td><td>6:30am – 4:00pm</td></tr>
+      <tr data-d="0"><td>Sunday</td><td>7:00am – 2:00pm</td></tr>
+    </table>
+    <div class="contact">
+      <div><div class="k">Address</div><p class="big">8 Harbor Walk<br>Palmetto Bay, SC 29900</p></div>
+      <div><div class="k">Say hello</div><p><a href="tel:+18435550123">(843) 555-0123</a><br><a href="mailto:hello@saltmarshcoffee.co">hello@saltmarshcoffee.co</a></p></div>
+    </div>
+    <div class="ctas">
+      <a class="btn" href="#menu">Order ahead</a>
+      <a class="btn ghost" href="tel:+18435550123">Call the bar</a>
+    </div>
+  </div>
+  <div class="map" role="img" aria-label="Illustrated map of Harbor Walk in Palmetto Bay">
+    <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="ripple" width="44" height="18" patternUnits="userSpaceOnUse"><path d="M2 10q5.5-5 11 0t11 0" fill="none" stroke="#2f5a63" stroke-width="1" opacity=".22"/></pattern>
+        <pattern id="grass" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M3 12v-6M7 12v-8M11 12v-5" stroke="#6f8f72" stroke-width="1" opacity=".45" stroke-linecap="round"/></pattern>
+      </defs>
+      <rect width="600" height="600" fill="#d6e6e3"/>
+      <rect width="600" height="600" fill="url(#ripple)"/>
+      <!-- land -->
+      <path d="M0 0h600v250c-40 18-70 10-110 30s-60 60-110 64-80-30-130-20S170 380 120 400 40 410 0 440z" fill="#ece3d3"/>
+      <!-- marsh -->
+      <path d="M150 360c30-20 70-30 110-14s70 40 120 24c30-10 50-30 80-40l-6 30c-30 20-60 50-104 50s-80-40-120-36-60 20-86 20z" fill="#cfd8c1"/>
+      <path d="M150 360c30-20 70-30 110-14s70 40 120 24c30-10 50-30 80-40l-6 30c-30 20-60 50-104 50s-80-40-120-36-60 20-86 20z" fill="url(#grass)"/>
+      <!-- roads -->
+      <path d="M0 120h600M210 0v330M430 0v262" stroke="#f7f4ee" stroke-width="16"/>
+      <path d="M0 210c120 0 210 10 300 50s170 6 300-40" fill="none" stroke="#f7f4ee" stroke-width="10"/>
+      <!-- blocks -->
+      <g fill="#e2d6c0"><rect x="40" y="20" width="140" height="78" rx="6"/><rect x="240" y="20" width="160" height="78" rx="6"/><rect x="460" y="20" width="120" height="78" rx="6"/><rect x="40" y="140" width="140" height="54" rx="6"/><rect x="240" y="140" width="160" height="70" rx="6"/><rect x="460" y="140" width="120" height="60" rx="6"/></g>
+      <!-- boardwalk -->
+      <path d="M300 262c40 20 90 30 150 10" fill="none" stroke="#c0873a" stroke-width="5" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <!-- dock -->
+      <path d="M470 270v90M455 360h30" stroke="#b9a684" stroke-width="7" stroke-linecap="round"/>
+      <!-- labels -->
+      <g font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.4" fill="#5f6b69">
+        <text x="236" y="116" fill="#8a8f86">BAY STREET</text>
+        <text x="96" y="203" transform="rotate(1.5 96 203)">HARBOR WALK</text>
+        <text x="236" y="392" fill="#55735a">SALT MARSH</text>
+        <text x="300" y="520" fill="#2f5a63" opacity=".7">PALMETTO SOUND</text>
+      </g>
+      <text x="485" y="345" font-family="Manrope, sans-serif" font-size="10" font-weight="700" letter-spacing="1.6" fill="#5f6b69">PIER</text>
+      <!-- pin -->
+      <g transform="translate(340 252)">
+        <circle r="34" fill="#2f5a63" opacity=".12"/>
+        <circle r="20" fill="#2f5a63" opacity=".18"/>
+        <path d="M0-44c-12 0-22 9.5-22 21.5C-22-6 0 6 0 6s22-12 22-28.5C22-34.5 12-44 0-44z" fill="#2f5a63"/>
+        <circle cy="-23" r="8" fill="#e2b877"/>
+      </g>
+    </svg>
+    <div class="pin-card"><b>Saltmarsh Coffee Co.</b>8 Harbor Walk · on the boardwalk, next to the town pier. Street parking on Bay St.</div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div><p class="pitch">Good coffee,<br><em>salt air included.</em></p></div>
+    <div><div class="k">Visit</div><a href="#visit">8 Harbor Walk</a><a href="#visit">Palmetto Bay, SC 29900</a><a href="tel:+18435550123">(843) 555-0123</a></div>
+    <div><div class="k">Explore</div><a href="#menu">Menu</a><a href="#beans">Our beans</a><a href="#room">The room</a><a href="#reviews">Reviews</a></div>
+    <div><div class="k">Hours</div><a href="#visit">Mon–Sat 6:30am–4pm</a><a href="#visit">Sun 7am–2pm</a><a href="mailto:hello@saltmarshcoffee.co">hello@saltmarshcoffee.co</a></div>
+  </div>
+  <div class="wordmark">Saltmarsh<span>.</span></div>
+  <div class="foot-wave" aria-hidden="true"></div>
+  <div class="foot-bottom"><span>© 2026 Saltmarsh Coffee Co. — a fictional business</span><span>Demo website designed by <a href="../../" style="color:#e2b877">Oneiros Studio</a></span></div>
+</div></footer>
+
+<script>
+(function(){var d=new Date().getDay();var r=document.querySelector('#hours tr[data-d="'+d+'"]');if(r)r.className='today';})();
+</script>
+</body>
+</html>

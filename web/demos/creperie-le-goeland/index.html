@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Crêperie Le Goéland — Démo Oneiros Studio</title>
+<meta name="description" content="Crêperie Le Goéland, galettes de sarrasin, crêpes et cidre fermier sur le port de Port-Kerlan. Site de démonstration réalisé par Oneiros Studio (commerce fictif).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --marine:#0f2339; --marine-2:#17314f; --nuit:#0a1828;
+  --ecume:#f6f1e7; --ecume-2:#ebe3d3; --papier:#fffcf5;
+  --beurre:#e3b04b; --beurre-2:#f2d391; --balise:#d33f2d;
+  --encre:#132131; --gris:#5d6672; --gris-clair:#9fb0c2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ecume);color:var(--encre);font-family:Karla,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:Gloock,Georgia,serif;font-weight:400}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.label{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--balise)}
+.label::before{content:"";width:22px;height:2px;background:currentColor}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:15px;letter-spacing:.01em;transition:transform .2s,background .2s,color .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-beurre{background:var(--beurre);color:var(--nuit)}
+.btn-beurre:hover{background:var(--beurre-2)}
+.btn-balise{background:var(--balise);color:#fff}
+.btn-ghost{border:1.5px solid rgba(246,241,231,.45);color:var(--ecume)}
+.btn-ghost:hover{border-color:var(--ecume)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ---------- header ---------- */
+header{position:absolute;inset:0 0 auto 0;z-index:10;color:var(--ecume)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 0}
+.logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logo svg{width:42px;height:42px;flex:none}
+.logo .t{display:flex;flex-direction:column;line-height:1}
+.logo small{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--beurre);margin-bottom:5px}
+.logo b{font-family:Gloock,serif;font-weight:400;font-size:27px;letter-spacing:-.01em}
+.links{display:flex;gap:34px;font-size:15px;font-weight:500}
+.links a{opacity:.85;position:relative}
+.links a:hover{opacity:1}
+.links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--beurre);transition:right .25s}
+.links a:hover::after{right:0}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--marine);color:var(--ecume);overflow:hidden;padding:136px 0 140px}
+.hero .chart{position:absolute;inset:0;width:100%;height:100%;opacity:.13;pointer-events:none}
+.hero .grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center}
+.hero .label{color:var(--beurre)}
+.hero h1{font-family:Gloock,serif;font-weight:400;font-size:clamp(52px,5.9vw,86px);line-height:.98;letter-spacing:-.02em;margin:24px 0 26px}
+.hero h1 span{color:var(--beurre)}
+.hero p.lead{max-width:470px;font-size:19px;color:#c8d3df}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.hero .meta{display:flex;gap:34px;margin-top:44px;padding-top:24px;border-top:1px solid rgba(246,241,231,.14);font-size:14px;color:var(--gris-clair)}
+.hero .meta b{display:block;font-family:Gloock,serif;font-weight:400;font-size:26px;color:var(--ecume);line-height:1.1;margin-bottom:3px}
+.hero-visual{position:relative;justify-self:end;width:100%;max-width:500px}
+.arch{position:relative;aspect-ratio:4/5;border-radius:260px 260px 26px 26px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.35)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:62% 60%;transform:scale(1.06)}
+.arch-frame{position:absolute;inset:-16px;border:1.5px solid rgba(227,176,75,.5);border-radius:276px 276px 38px 38px;pointer-events:none}
+.stamp{position:absolute;left:-58px;top:70px;width:138px;height:138px;border-radius:50%;background:var(--balise);color:#fff;display:grid;place-items:center;box-shadow:0 14px 34px rgba(0,0,0,.3)}
+.stamp svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.stamp svg.gull{width:46px;height:46px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.note{position:absolute;right:-26px;bottom:44px;background:var(--papier);color:var(--encre);border-radius:18px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 18px 44px rgba(0,0,0,.28)}
+.note strong{font-family:Gloock,serif;font-weight:400;font-size:38px;line-height:1}
+.stars{color:var(--beurre);letter-spacing:2px;font-size:15px}
+.note small{display:block;font-size:12.5px;color:var(--gris);line-height:1.3}
+.hero .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:70px;display:block}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--balise);color:#fff;overflow:hidden;white-space:nowrap;padding:17px 0;position:relative}
+.ticker .track{display:inline-flex;animation:defile 38s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:30px;padding-right:30px;font-family:Gloock,serif;font-size:24px}
+.ticker i{font-style:normal;color:var(--beurre-2);font-size:16px}
+@keyframes defile{to{transform:translateX(-50%)}}
+
+/* ---------- carte ---------- */
+.carte{padding:120px 0 130px;background:var(--ecume)}
+.carte-head{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end;margin-bottom:70px}
+.carte-head h2,.sec-title{font-family:Gloock,serif;font-weight:400;font-size:clamp(44px,5vw,70px);line-height:1;letter-spacing:-.02em;margin-top:20px}
+.carte-head h2 span{color:var(--balise)}
+.carte-head p{color:var(--gris);max-width:460px;margin-top:22px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.duo figure{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5}
+.duo figure:nth-child(2){transform:translateY(40px)}
+.duo img{width:100%;height:100%;object-fit:cover}
+.duo figcaption{position:absolute;left:14px;bottom:14px;background:rgba(10,24,40,.82);backdrop-filter:blur(6px);color:var(--ecume);font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px}
+
+.menu{position:relative;background:var(--papier);border:1px solid rgba(15,35,57,.18);border-radius:6px;padding:70px 60px 54px;box-shadow:0 30px 70px -30px rgba(15,35,57,.35)}
+.menu::before{content:"";position:absolute;inset:12px;border:1px solid rgba(15,35,57,.14);border-radius:3px;pointer-events:none}
+.menu-title{text-align:center;margin-bottom:54px}
+.menu-title .orn{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--balise)}
+.menu-title .orn::before,.menu-title .orn::after{content:"";height:1px;width:90px;background:rgba(15,35,57,.3)}
+.menu-title h3{font-family:Gloock,serif;font-weight:400;font-size:48px;line-height:1;margin:14px 0 8px;color:var(--marine)}
+.menu-title p{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);font-weight:600}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.col{padding:0 34px}
+.col+.col{border-left:1px solid rgba(15,35,57,.14)}
+.col:first-child{padding-left:0}.col:last-child{padding-right:0}
+.col-h{display:flex;align-items:baseline;gap:12px;padding-bottom:16px;margin-bottom:8px;border-bottom:2px solid var(--marine)}
+.col-h .num{font-family:Gloock,serif;color:var(--balise);font-size:18px}
+.col-h h4{font-family:Gloock,serif;font-weight:400;font-size:30px;line-height:1;color:var(--marine)}
+.col-h small{margin-left:auto;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);font-weight:700}
+.item{padding:15px 0;border-bottom:1px dashed rgba(15,35,57,.16)}
+.item:last-child{border-bottom:0}
+.item .l{display:flex;align-items:baseline;gap:8px}
+.item .n{font-family:Gloock,serif;font-size:19.5px;line-height:1.25;color:var(--encre)}
+.item .dots{flex:1;border-bottom:1.5px dotted rgba(15,35,57,.35);transform:translateY(-4px);min-width:16px}
+.item .p{font-weight:700;font-size:16px;color:var(--marine);white-space:nowrap}
+.item .d{font-size:14.5px;color:var(--gris);line-height:1.45;margin-top:3px;max-width:92%}
+.tag{display:inline-block;font-family:Karla,sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--balise);padding:3px 7px;border-radius:4px;vertical-align:3px;margin-left:6px}
+.tag.v{background:#3f7a52}
+.menu-foot{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;margin-top:46px;padding-top:34px;border-top:1px solid rgba(15,35,57,.14)}
+.formule{background:var(--marine);color:var(--ecume);border-radius:14px;padding:20px 26px;display:flex;align-items:center;gap:22px}
+.formule b{font-family:Gloock,serif;font-weight:400;font-size:36px;color:var(--beurre);line-height:1}
+.formule span{font-size:14px;line-height:1.45;color:#c8d3df}
+.formule span strong{display:block;color:var(--ecume);font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.menu-foot p{font-size:14px;color:var(--gris)}
+
+/* ---------- histoire ---------- */
+.histoire{background:var(--ecume-2);padding:130px 0;position:relative;overflow:hidden}
+.histoire .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}
+.histoire figure{position:relative}
+.histoire figure .ph{border-radius:22px;overflow:hidden;aspect-ratio:4/5}
+.histoire figure img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.histoire figure figcaption{position:absolute;right:-30px;bottom:40px;background:var(--papier);padding:14px 18px;border-radius:12px;font-size:13px;color:var(--gris);box-shadow:0 14px 30px rgba(0,0,0,.12);line-height:1.35}
+.histoire figure figcaption b{display:block;font-family:Gloock,serif;font-weight:400;font-size:18px;color:var(--encre)}
+.histoire .txt p{color:#45505c;font-size:18px;margin-top:22px;max-width:560px}
+.histoire .txt p.first::first-letter{font-family:Gloock,serif;float:left;font-size:74px;line-height:.85;padding:6px 12px 0 0;color:var(--balise)}
+.histoire .sec-title span{color:var(--balise)}
+.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;padding-top:34px;border-top:1px solid rgba(15,35,57,.18)}
+.chiffres b{display:block;font-family:Gloock,serif;font-weight:400;font-size:46px;line-height:1;color:var(--marine)}
+.chiffres span{font-size:14px;color:var(--gris);display:block;margin-top:8px}
+.sign{display:flex;align-items:center;gap:14px;margin-top:34px;font-size:14px;color:var(--gris)}
+.sign em{font-family:Gloock,serif;font-style:normal;font-size:22px;color:var(--encre)}
+
+/* ---------- port ---------- */
+.port{position:relative;height:640px;overflow:hidden;color:#fff}
+.port img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.port::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,24,40,0) 30%,rgba(10,24,40,.55) 62%,rgba(10,24,40,.9) 100%)}
+.port .cap{position:absolute;left:0;right:0;bottom:56px;z-index:2}
+.port .cap .wrap{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.port h2{font-family:Gloock,serif;font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1;max-width:680px;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.port .label{color:var(--beurre-2)}
+.port .coord{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;text-align:right;color:rgba(255,255,255,.85);white-space:nowrap}
+
+/* ---------- avis ---------- */
+.avis{background:var(--marine);color:var(--ecume);padding:130px 0;position:relative;overflow:hidden}
+.avis .chart{position:absolute;inset:0;width:100%;height:100%;opacity:.08;pointer-events:none}
+.avis-head{position:relative;display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+.avis .label{color:var(--beurre)}
+.avis-head .score{display:flex;align-items:center;gap:18px;background:rgba(246,241,231,.06);border:1px solid rgba(246,241,231,.14);padding:18px 24px;border-radius:18px}
+.avis-head .score strong{font-family:Gloock,serif;font-weight:400;font-size:52px;line-height:1;color:var(--beurre)}
+.avis-head .score small{display:block;color:var(--gris-clair);font-size:13.5px}
+.cards{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:var(--papier);color:var(--encre);border-radius:20px;padding:34px 32px 30px;display:flex;flex-direction:column}
+.card:nth-child(2){transform:translateY(30px)}
+.card .stars{font-size:16px}
+.card p{font-family:Gloock,serif;font-size:21px;line-height:1.38;margin:18px 0 26px;flex:1}
+.who{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(15,35,57,.12);font-size:14px}
+.who .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px;flex:none}
+.who b{display:block;font-size:15px}
+.who small{color:var(--gris);font-size:12.5px}
+.who .g{margin-left:auto;width:22px;height:22px}
+
+/* ---------- infos ---------- */
+.infos{padding:130px 0 120px;background:var(--ecume)}
+.infos .grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.infos .sec-title span{color:var(--balise)}
+.infos .intro{color:var(--gris);margin-top:20px;max-width:460px}
+.horaires{margin-top:40px;background:var(--papier);border:1px solid rgba(15,35,57,.12);border-radius:20px;padding:12px 28px}
+.horaires .r{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(15,35,57,.09);font-size:16px}
+.horaires .r:last-child{border:0}
+.horaires .r span:first-child{font-weight:700}
+.horaires .r span:last-child{color:#3b4653;text-align:right}
+.horaires .r.ferme span:last-child{color:var(--balise);font-weight:600}
+.horaires .r.today{position:relative}
+.contact-list{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.contact-list div{font-size:15px;color:#3b4653}
+.contact-list .label{font-size:11px;margin-bottom:8px}
+.contact-list .label::before{width:14px}
+.contact-list a,.contact-list address{font-style:normal;font-family:Gloock,serif;font-size:21px;line-height:1.3;color:var(--encre);display:block;word-break:break-word}
+
+.resa{background:var(--marine);color:var(--ecume);border-radius:26px;overflow:hidden}
+.resa-map{position:relative;height:250px;background:#dfe8ee}
+.resa-map svg{width:100%;height:100%;display:block}
+.resa-form{padding:36px 36px 38px}
+.resa-form h3{font-family:Gloock,serif;font-weight:400;font-size:34px;line-height:1.05}
+.resa-form p.s{color:var(--gris-clair);font-size:15px;margin:8px 0 24px}
+form .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+form .row.two{grid-template-columns:1fr 1fr}
+form label{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--beurre);margin-bottom:6px}
+form input,form select{width:100%;font:inherit;font-size:15px;color:var(--ecume);background:rgba(246,241,231,.06);border:1px solid rgba(246,241,231,.2);border-radius:12px;padding:12px 14px;outline:none;-webkit-appearance:none;appearance:none}
+form select{background-image:linear-gradient(45deg,transparent 50%,var(--beurre) 50%),linear-gradient(135deg,var(--beurre) 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+form select option{color:#111}
+form input::placeholder{color:rgba(246,241,231,.45)}
+form input:focus,form select:focus{border-color:var(--beurre)}
+form .send{display:flex;align-items:center;gap:18px;margin-top:20px;flex-wrap:wrap}
+form .send button{border:0;cursor:pointer;font-family:inherit}
+form .send small{color:var(--gris-clair);font-size:13px}
+.ok{display:none;margin-top:16px;background:rgba(227,176,75,.14);border:1px solid rgba(227,176,75,.4);color:var(--beurre-2);padding:12px 16px;border-radius:12px;font-size:14px}
+
+.acces{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.acces li{display:flex;gap:12px;align-items:flex-start;background:var(--papier);border:1px solid rgba(15,35,57,.12);border-radius:16px;padding:16px;font-size:13px;color:var(--gris);line-height:1.35}
+.acces svg{width:24px;height:24px;flex:none;color:var(--balise)}
+.acces b{display:block;color:var(--encre);font-size:14px;margin-bottom:3px}
+
+/* ---------- footer ---------- */
+footer{background:var(--nuit);color:#9fb0c2;padding:80px 0 110px;font-size:14px;position:relative;overflow:hidden}
+footer .top{display:flex;justify-content:space-between;align-items:end;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(246,241,231,.1)}
+footer .big{font-family:Gloock,serif;font-size:clamp(46px,7vw,104px);line-height:.95;color:var(--ecume);letter-spacing:-.02em}
+footer .big span{color:var(--beurre)}
+footer .bottom{display:flex;justify-content:space-between;gap:20px;padding-top:26px;flex-wrap:wrap}
+footer nav{padding:0;gap:26px;justify-content:flex-start;flex-wrap:wrap;font-weight:500}
+
+/* ---------- badge démo ---------- */
+.demo-badge{position:fixed;left:16px;bottom:16px;z-index:50;display:flex;align-items:center;gap:9px;max-width:calc(100vw - 32px);background:rgba(10,24,40,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--ecume);border:1px solid rgba(227,176,75,.45);border-radius:999px;padding:9px 16px 9px 11px;font-size:12.5px;line-height:1.25;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:border-color .2s}
+.demo-badge:hover{border-color:var(--beurre)}
+.demo-badge i{width:8px;height:8px;border-radius:50%;background:var(--beurre);flex:none;box-shadow:0 0 0 4px rgba(227,176,75,.2)}
+.demo-badge b{color:var(--beurre-2);font-weight:700}
+
+@media (max-width:1080px){
+  .hero .grid{gap:50px}
+  .stamp{left:-30px;width:118px;height:118px}
+  .note{right:-10px}
+  .col{padding:0 22px}
+  .menu{padding:60px 40px 46px}
+  .acces{grid-template-columns:1fr}
+  .hero .meta{gap:22px}
+  .hero .meta b{font-size:22px;white-space:nowrap}
+  form .row{grid-template-columns:1fr 1fr}
+  form .row .full{grid-column:1/-1}
+}
+@media (max-width:900px){
+  .links{display:none}
+  .wrap{padding:0 22px}
+  .hero{padding:118px 0 110px}
+  .hero .grid,.carte-head,.histoire .grid,.infos .grid{grid-template-columns:1fr;gap:50px}
+  .hero-visual{justify-self:center;max-width:430px}
+  .cols{grid-template-columns:1fr;gap:40px}
+  .col{padding:0!important;border:0!important}
+  .menu-foot{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .acces{grid-template-columns:repeat(3,1fr)}
+  .card:nth-child(2){transform:none}
+  .avis-head{flex-direction:column;align-items:flex-start}
+  .histoire figure{max-width:520px}
+  .histoire figure figcaption{right:16px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  nav{padding:18px 0}
+  .logo svg{width:34px;height:34px}
+  .logo b{font-size:22px}
+  .logo small{font-size:9px;letter-spacing:.26em;margin-bottom:4px}
+  nav .btn{padding:11px 18px;font-size:14px}
+  .hero{padding:108px 0 90px}
+  .hero .label{font-size:10.5px;letter-spacing:.15em}
+  .hero h1{font-size:48px;margin:20px 0 20px}
+  .hero p.lead{font-size:16.5px}
+  .hero .ctas{margin-top:30px}
+  .hero .ctas .btn{flex:1 1 auto;justify-content:center;padding:14px 18px}
+  .hero .meta{gap:14px;margin-top:34px;padding-top:20px;font-size:12px;justify-content:space-between}
+  .hero .meta b{font-size:17px;white-space:nowrap}
+  .hero-visual{max-width:none;padding:0 10px}
+  .arch{aspect-ratio:5/5.6}
+  .arch-frame{inset:-10px}
+  .stamp{left:-6px;top:-24px;width:96px;height:96px}
+  .stamp svg.gull{width:32px;height:32px}
+  .note{right:0;bottom:22px;padding:12px 16px}
+  .note strong{font-size:30px}
+  .hero .wave{height:40px}
+  .ticker{padding:13px 0}
+  .ticker span{font-size:19px;gap:22px;padding-right:22px}
+  .carte,.histoire,.avis,.infos{padding:84px 0}
+  .carte-head{margin-bottom:56px}
+  .duo{gap:12px}
+  .duo figure:nth-child(2){transform:translateY(24px)}
+  .duo figcaption{left:8px;bottom:8px;font-size:11.5px;padding:6px 10px}
+  .menu{padding:44px 22px 30px;border-radius:4px}
+  .menu::before{inset:7px}
+  .menu-title{margin-bottom:38px}
+  .menu-title h3{font-size:40px}
+  .menu-title p{font-size:12px;letter-spacing:.12em}
+  .menu-title .orn::before,.menu-title .orn::after{width:50px}
+  .col-h h4{font-size:27px}
+  .item .n{font-size:18px}
+  .item .d{max-width:100%;font-size:14px}
+  .formule{flex-direction:column;align-items:flex-start;gap:10px;padding:20px}
+  .histoire figure figcaption{right:12px;bottom:16px}
+  .histoire .txt p{font-size:16.5px}
+  .chiffres{gap:12px}
+  .chiffres b{font-size:34px}
+  .chiffres span{font-size:12.5px}
+  .port{height:560px}
+  .port img{object-position:40% 30%}
+  .port::after{background:linear-gradient(180deg,rgba(10,24,40,0) 18%,rgba(10,24,40,.7) 52%,rgba(10,24,40,.94) 100%)}
+  .port .cap{bottom:36px}
+  .port .cap .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .port .coord{text-align:left}
+  .card{padding:28px 24px 24px}
+  .card p{font-size:19px}
+  .avis-head .score strong{font-size:42px}
+  .contact-list{grid-template-columns:1fr}
+  .acces{grid-template-columns:1fr}
+  .resa-map{height:200px}
+  .resa-form{padding:28px 22px 30px}
+  .resa-form h3{font-size:29px}
+  form .row{grid-template-columns:1fr 1fr}
+  form .row .full{grid-column:1/-1}
+  form .row.two{grid-template-columns:1fr}
+  form .send .btn{width:100%;justify-content:center}
+  footer{padding:64px 0 96px}
+  footer .top{flex-direction:column;align-items:flex-start}
+  footer .bottom{flex-direction:column}
+  .demo-badge{left:10px;bottom:10px;max-width:calc(100vw - 20px);font-size:11px;padding:7px 12px 7px 10px;gap:7px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker .track,.stamp svg.ring{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="gull" viewBox="0 0 64 64"><path d="M6 30c8-7 17-7 26 4 9-11 18-11 26-4" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 31.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="wavey" viewBox="0 0 120 12"><path d="M0 6c10 0 10-5 20-5s10 5 20 5 10-5 20-5 10 5 20 5 10-5 20-5 10 5 20 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <pattern id="contours" width="240" height="120" patternUnits="userSpaceOnUse">
+      <path d="M0 20c40 -14 80 14 120 0s80 -14 120 0M0 50c40 -14 80 14 120 0s80 -14 120 0M0 80c40 -14 80 14 120 0s80 -14 120 0M0 110c40 -14 80 14 120 0s80 -14 120 0" fill="none" stroke="#f6f1e7" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="#" aria-label="Crêperie Le Goéland — accueil">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#e3b04b"/><g transform="translate(6 6) scale(.56)" color="#0f2339"><use href="#gull"/></g><path d="M10 33c4.5 0 4.5-2.5 9-2.5s4.5 2.5 9 2.5 4.5-2.5 9-2.5" fill="none" stroke="#0f2339" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="t"><small>Crêperie</small><b>Le Goéland</b></span>
+    </a>
+    <div class="links"><a href="#carte">La carte</a><a href="#histoire">Notre histoire</a><a href="#avis">Avis</a><a href="#infos">Infos pratiques</a></div>
+    <a class="btn btn-balise" href="#reserver">Réserver</a>
+  </nav></div>
+</header>
+
+<section class="hero">
+  <svg class="chart" aria-hidden="true"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
+  <div class="wrap grid">
+    <div>
+      <span class="label">Crêperie bretonne · Port-Kerlan</span>
+      <h1>Galettes, cidre &amp; <span>vue sur les bateaux.</span></h1>
+      <p class="lead">Sur le quai des Thoniers, on tourne les galettes de sarrasin et les crêpes de froment à la minute, sur nos billigs en fonte. Une bolée de cidre fermier, le port en face : vous y êtes.</p>
+      <div class="ctas">
+        <a class="btn btn-beurre" href="#reserver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Réserver une table</a>
+        <a class="btn btn-ghost" href="#carte">Voir la carte</a>
+      </div>
+      <div class="meta">
+        <div><b>5 jours sur 7</b>du mer. au dim.</div>
+        <div><b>Sarrasin bio</b>moulu en Bretagne</div>
+        <div><b>Face au port</b>quai des Thoniers</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="arch-frame"></div>
+      <div class="arch"><img src="img/hero.jpg" alt="Crêpes au sucre et confiture, servies avec un café"></div>
+      <div class="stamp" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 140 140"><defs><path id="circ" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1 -104 0"/></defs><text font-family="Karla, sans-serif" font-size="11.5" font-weight="700" letter-spacing="2" fill="#fff"><textPath href="#circ" textLength="322" lengthAdjust="spacing">CRÊPES · GALETTES · CIDRE · PORT-KERLAN · </textPath></text></svg>
+        <svg class="gull" viewBox="0 0 64 64" color="#fff"><use href="#gull"/></svg>
+      </div>
+      <div class="note"><strong>4,8</strong><div><div class="stars">★★★★★</div><small>312 avis Google</small></div></div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C120 15 240 15 360 35s240 30 360 10 240-35 360-20 240 30 360 15V70H0z" fill="#d33f2d"/></svg>
+</section>
+
+<div class="ticker" aria-label="Sarrasin bio · Cidre fermier · Vue sur le port">
+  <div class="track">
+    <span>Sarrasin bio <i>✦</i> Cidre fermier <i>✦</i> Vue sur le port <i>✦</i> Caramel au beurre salé maison <i>✦</i> Faites à la minute <i>✦</i></span>
+    <span aria-hidden="true">Sarrasin bio <i>✦</i> Cidre fermier <i>✦</i> Vue sur le port <i>✦</i> Caramel au beurre salé maison <i>✦</i> Faites à la minute <i>✦</i></span>
+  </div>
+</div>
+
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="carte-head">
+      <div>
+        <span class="label">La carte</span>
+        <h2>Le blé noir d'abord, <span>le beurre salé ensuite.</span></h2>
+        <p>Une carte courte, qui suit les arrivages du port et le marché du samedi. Toutes nos galettes existent en version végétarienne, et le caramel est cuit chaque matin.</p>
+      </div>
+      <div class="duo">
+        <figure><img src="img/galette.jpg" alt="Galette verte aux épinards, tomates et fromage frais" style="object-position:50% 62%"><figcaption>La Verte · de saison</figcaption></figure>
+        <figure><img src="img/chocolat.jpg" alt="Crêpes au chocolat maison et noisettes torréfiées" style="object-position:60% 50%"><figcaption>Chocolat &amp; noisettes</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="menu-title">
+        <div class="orn"><svg width="44" height="44" viewBox="0 0 64 64"><use href="#gull"/></svg></div>
+        <h3>La Carte</h3>
+        <p>Servie midi &amp; soir · faite à la minute</p>
+      </div>
+      <div class="cols">
+        <div class="col">
+          <div class="col-h"><span class="num">I.</span><h4>Galettes</h4><small>blé noir</small></div>
+          <div class="item"><div class="l"><span class="n">La Complète</span><span class="dots"></span><span class="p">9,50 €</span></div><p class="d">Jambon blanc, emmental râpé, œuf miroir</p></div>
+          <div class="item"><div class="l"><span class="n">La Goéland <span class="tag">Maison</span></span><span class="dots"></span><span class="p">14,50 €</span></div><p class="d">Saumon fumé, fondue de poireaux, crème citronnée, aneth</p></div>
+          <div class="item"><div class="l"><span class="n">La Paysanne</span><span class="dots"></span><span class="p">12,50 €</span></div><p class="d">Andouille de Guémené, pommes poêlées, oignons confits</p></div>
+          <div class="item"><div class="l"><span class="n">La Chèvre-Miel <span class="tag v">Végé</span></span><span class="dots"></span><span class="p">11,50 €</span></div><p class="d">Chèvre frais, miel du pays, noix, salade croquante</p></div>
+          <div class="item"><div class="l"><span class="n">La Verte <span class="tag v">Été</span></span><span class="dots"></span><span class="p">12,00 €</span></div><p class="d">Pâte aux épinards, tomates anciennes, fromage frais</p></div>
+          <div class="item"><div class="l"><span class="n">La Saint-Jacques</span><span class="dots"></span><span class="p">17,50 €</span></div><p class="d">Noix snackées, poireaux, beurre blanc — d'octobre à mars</p></div>
+        </div>
+        <div class="col">
+          <div class="col-h"><span class="num">II.</span><h4>Crêpes</h4><small>froment</small></div>
+          <div class="item"><div class="l"><span class="n">Beurre-sucre</span><span class="dots"></span><span class="p">4,50 €</span></div><p class="d">La plus simple, la plus juste</p></div>
+          <div class="item"><div class="l"><span class="n">Citron-sucre</span><span class="dots"></span><span class="p">5,00 €</span></div><p class="d">Citron pressé minute, sucre de canne</p></div>
+          <div class="item"><div class="l"><span class="n">Caramel beurre salé</span><span class="dots"></span><span class="p">6,50 €</span></div><p class="d">Notre caramel maison, cuit chaque matin</p></div>
+          <div class="item"><div class="l"><span class="n">Chocolat-noisette</span><span class="dots"></span><span class="p">7,50 €</span></div><p class="d">Chocolat maison, noisettes torréfiées, chantilly</p></div>
+          <div class="item"><div class="l"><span class="n">La Goélette</span><span class="dots"></span><span class="p">8,50 €</span></div><p class="d">Pommes caramélisées, glace vanille, amandes grillées</p></div>
+          <div class="item"><div class="l"><span class="n">Flambée au lambig</span><span class="dots"></span><span class="p">9,00 €</span></div><p class="d">Beurre, sucre, eau-de-vie de cidre flambée en salle</p></div>
+        </div>
+        <div class="col">
+          <div class="col-h"><span class="num">III.</span><h4>Cidres &amp; boissons</h4></div>
+          <div class="item"><div class="l"><span class="n">Cidre fermier brut ou doux</span><span class="dots"></span><span class="p">3,50 €</span></div><p class="d">La bolée · 14,00 € la bouteille de 75 cl</p></div>
+          <div class="item"><div class="l"><span class="n">Poiré fermier</span><span class="dots"></span><span class="p">16,00 €</span></div><p class="d">Bouteille de 75 cl, pétillant et fin</p></div>
+          <div class="item"><div class="l"><span class="n">Chouchen</span><span class="dots"></span><span class="p">4,50 €</span></div><p class="d">Hydromel breton, le verre de 6 cl</p></div>
+          <div class="item"><div class="l"><span class="n">Lait ribot</span><span class="dots"></span><span class="p">3,00 €</span></div><p class="d">Lait fermenté, à l'ancienne, la bolée</p></div>
+          <div class="item"><div class="l"><span class="n">Jus de pomme artisanal</span><span class="dots"></span><span class="p">3,50 €</span></div><p class="d">Pressé à la ferme, non filtré</p></div>
+          <div class="item"><div class="l"><span class="n">Café, thé, chocolat</span><span class="dots"></span><span class="p">dès 2,00 €</span></div><p class="d">Chocolat chaud maison · 3,50 €</p></div>
+        </div>
+      </div>
+      <div class="menu-foot">
+        <div class="formule"><b>16,50 €</b><span><strong>Formule du midi</strong>Galette complète + crêpe beurre-sucre + bolée de cidre · mer. au ven.</span></div>
+        <p>Farine de sarrasin bio, moulue en Bretagne. Œufs de plein air, beurre et lait d'une ferme voisine. Allergènes : liste disponible sur demande en salle. Prix nets, service compris.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="histoire" id="histoire">
+  <div class="wrap grid">
+    <figure>
+      <div class="ph"><img src="img/port.jpg" alt="Le bassin du port au petit matin, une barque orange au premier plan"></div>
+      <figcaption><b>Le bassin, 7 h du matin</b>la vue depuis nos fenêtres</figcaption>
+    </figure>
+    <div class="txt">
+      <span class="label">Sur le quai depuis 1987</span>
+      <h2 class="sec-title">Une cabane de pêcheurs, <span>trois billigs</span> et la mer en face.</h2>
+      <p class="first">En 1987, Annick Le Floc'h ouvre un petit comptoir de dix couverts dans l'ancienne cabane des thoniers. Les pêcheurs viennent y prendre une complète au retour de marée, les estivants suivent.</p>
+      <p>Aujourd'hui, c'est sa fille Gwen qui tient les billigs. La recette de la pâte n'a pas changé, le caramel non plus : du beurre salé, du sucre, de la patience. Seule la salle s'est agrandie, avec ses grandes fenêtres ouvertes sur les bateaux.</p>
+      <div class="chiffres">
+        <div><b>1987</b><span>ouverture sur le quai</span></div>
+        <div><b>40</b><span>couverts face au port</span></div>
+        <div><b>3</b><span>billigs en fonte</span></div>
+      </div>
+      <div class="sign"><svg width="36" height="36" viewBox="0 0 64 64" style="color:var(--balise)"><use href="#gull"/></svg><span><em>Gwen &amp; l'équipe</em><br>vous attendent au 4 quai des Thoniers</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="port" id="port">
+  <img src="img/bateaux.jpg" alt="Le port coloré, ses façades et ses bateaux amarrés">
+  <div class="cap"><div class="wrap">
+    <div>
+      <span class="label">Le port de Port-Kerlan</span>
+      <h2 style="margin-top:16px">Les bateaux rentrent, les galettes sortent.</h2>
+    </div>
+    <div class="coord">Quai des Thoniers<br>Finistère sud</div>
+  </div></div>
+</section>
+
+<section class="avis" id="avis">
+  <svg class="chart" aria-hidden="true"><rect width="100%" height="100%" fill="url(#contours)"/></svg>
+  <div class="wrap">
+    <div class="avis-head">
+      <div>
+        <span class="label">Ils sont passés par le quai</span>
+        <h2 class="sec-title">Ce qu'en disent<br>nos habitués.</h2>
+      </div>
+      <div class="score"><strong>4,8</strong><div><div class="stars" style="font-size:18px">★★★★★</div><small>312 avis Google</small></div></div>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="stars">★★★★★</div>
+        <p>« La galette Goéland est une merveille, la pâte est fine et croustillante sur les bords. Et ce caramel au beurre salé… On revient chaque été. »</p>
+        <div class="who"><span class="av" style="background:#d33f2d">C</span><span><b>Claire M.</b><small>il y a 2 semaines</small></span><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.5c2.1-1.9 3.3-4.7 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.2-2.7l-3.5-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.2v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.2a11 11 0 0 0 0 9.8l3.6-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.1-3.1A11 11 0 0 0 2.2 7.1l3.6 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg></div>
+      </article>
+      <article class="card">
+        <div class="stars">★★★★★</div>
+        <p>« Table près de la fenêtre, vue sur les bateaux, cidre fermier bien frais. Accueil adorable, même un dimanche soir plein à craquer. »</p>
+        <div class="who"><span class="av" style="background:#17314f">T</span><span><b>Thomas L.</b><small>il y a 1 mois</small></span><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.5c2.1-1.9 3.3-4.7 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.2-2.7l-3.5-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.2v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.2a11 11 0 0 0 0 9.8l3.6-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.1-3.1A11 11 0 0 0 2.2 7.1l3.6 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg></div>
+      </article>
+      <article class="card">
+        <div class="stars">★★★★★</div>
+        <p>« Une vraie crêperie comme on les aime : formule du midi copieuse, prix honnêtes, et la crêpe flambée au lambig vaut le détour. »</p>
+        <div class="who"><span class="av" style="background:#c08a25">N</span><span><b>Nathalie &amp; Yann</b><small>il y a 3 mois</small></span><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.5c2.1-1.9 3.3-4.7 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.2-2.7l-3.5-2.7c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.2v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.2a11 11 0 0 0 0 9.8l3.6-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.1-3.1A11 11 0 0 0 2.2 7.1l3.6 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="wrap grid">
+    <div>
+      <span class="label">Horaires &amp; accès</span>
+      <h2 class="sec-title">On vous garde <span>une table&nbsp;?</span></h2>
+      <p class="intro">Réservation conseillée le week-end et tout l'été. Les galettes se dégustent aussi à emporter, sur le muret du quai.</p>
+      <div class="horaires">
+        <div class="r ferme"><span>Lundi – Mardi</span><span>Fermé</span></div>
+        <div class="r"><span>Mercredi</span><span>12h–14h · 19h–21h30</span></div>
+        <div class="r"><span>Jeudi</span><span>12h–14h · 19h–21h30</span></div>
+        <div class="r"><span>Vendredi</span><span>12h–14h · 19h–21h30</span></div>
+        <div class="r"><span>Samedi</span><span>12h–14h · 19h–21h30</span></div>
+        <div class="r"><span>Dimanche</span><span>12h–14h · 19h–21h30</span></div>
+      </div>
+      <div class="contact-list">
+        <div><span class="label">Adresse</span><address>4 quai des Thoniers<br>29900 Port-Kerlan</address></div>
+        <div><span class="label">Téléphone</span><a href="tel:+33298000000">02 98 00 00 00</a></div>
+        <div style="grid-column:1/-1"><span class="label">Email</span><a href="mailto:contact@creperie-legoeland.fr">contact@creperie-legoeland.fr</a></div>
+      </div>
+    </div>
+
+    <div class="side">
+    <div class="resa" id="reserver">
+      <div class="resa-map" aria-label="Plan stylisé du port">
+        <svg viewBox="0 0 600 250" preserveAspectRatio="xMidYMid slice">
+          <rect width="600" height="250" fill="#cfdde6"/>
+          <g fill="none" stroke="#a9c1d1" stroke-width="1.2">
+            <path d="M-10 200c80-20 160 10 240-8s170-30 380-6"/><path d="M-10 225c90-18 170 12 260-6s170-24 360-4"/><path d="M-10 175c70-22 150 8 230-12s180-30 390-8"/><path d="M-10 150c80-20 140 12 220-10s200-26 400-10"/>
+          </g>
+          <path d="M0 0h600v92c-60 6-110-4-160 10-40 12-70 2-110 6-50 6-80 26-150 22C120 126 60 112 0 120z" fill="#f3ecdc"/>
+          <path d="M0 0h600v92c-60 6-110-4-160 10-40 12-70 2-110 6-50 6-80 26-150 22C120 126 60 112 0 120z" fill="none" stroke="#0f2339" stroke-width="1.5"/>
+          <rect x="300" y="100" width="16" height="78" fill="#f3ecdc" stroke="#0f2339" stroke-width="1.5"/>
+          <rect x="420" y="96" width="14" height="60" fill="#f3ecdc" stroke="#0f2339" stroke-width="1.5"/>
+          <g fill="#e6dbc4" stroke="#0f2339" stroke-width="1.2"><rect x="70" y="34" width="44" height="30" rx="2"/><rect x="122" y="28" width="36" height="36" rx="2"/><rect x="166" y="40" width="50" height="26" rx="2"/><rect x="430" y="30" width="40" height="36" rx="2"/><rect x="478" y="38" width="44" height="28" rx="2"/></g><g stroke="#b9ab8f" stroke-width="1" stroke-dasharray="3 4"><path d="M0 80H600"/></g>
+          <text x="92" y="108" font-family="Karla, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#0f2339">QUAI DES THONIERS</text>
+          <text x="120" y="222" font-family="Gloock, serif" font-size="17" fill="#5b7d95" font-style="italic">Bassin du port</text>
+          <g fill="#0f2339"><path d="M352 160l8-22 8 22z" opacity=".7"/><path d="M470 196l7-18 7 18z" opacity=".6"/><path d="M232 186l6-16 6 16z" opacity=".5"/></g>
+          <circle cx="324" cy="196" r="5" fill="#e3b04b" stroke="#0f2339" stroke-width="1.5"/>
+          <g transform="translate(486 196) scale(.85)"><circle r="26" fill="none" stroke="#0f2339" stroke-width="1"/><path d="M0-30L5 0 0 30-5 0z" fill="#0f2339"/><path d="M0-30L5 0H-5z" fill="#d33f2d"/><text y="-34" text-anchor="middle" font-family="Karla, sans-serif" font-size="10" font-weight="700" fill="#0f2339">N</text></g>
+          <g transform="translate(262 62)">
+            <ellipse cx="0" cy="40" rx="16" ry="5" fill="#0f2339" opacity=".25"/>
+            <path d="M0 40c-10-14-18-22-18-32a18 18 0 0 1 36 0c0 10-8 18-18 32z" fill="#d33f2d" stroke="#fff" stroke-width="2.5"/>
+            <circle cy="8" r="7" fill="#fff"/>
+          </g>
+          <g transform="translate(284 34)"><rect width="134" height="30" rx="15" fill="#0f2339"/><text x="67" y="20" text-anchor="middle" font-family="Gloock, serif" font-size="15" fill="#f6f1e7">Le Goéland</text></g>
+        </svg>
+      </div>
+      <div class="resa-form">
+        <h3>Réserver une table</h3>
+        <p class="s">Réponse par SMS dans la journée · ou au&nbsp;02&nbsp;98&nbsp;00&nbsp;00&nbsp;00</p>
+        <form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block';">
+          <div class="row">
+            <div><label for="f-date">Date</label><input id="f-date" type="text" placeholder="sam. 18 oct."></div>
+            <div><label for="f-heure">Heure</label><select id="f-heure"><option>12h00</option><option>12h30</option><option>13h00</option><option>19h00</option><option selected>19h30</option><option>20h00</option><option>20h30</option></select></div>
+            <div class="full"><label for="f-pers">Couverts</label><select id="f-pers"><option>1 personne</option><option selected>2 personnes</option><option>3 personnes</option><option>4 personnes</option><option>5 personnes</option><option>6 personnes et +</option></select></div>
+          </div>
+          <div class="row two">
+            <div><label for="f-nom">Nom</label><input id="f-nom" type="text" placeholder="Votre nom" autocomplete="off"></div>
+            <div><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" placeholder="06 ·· ·· ·· ··" autocomplete="off"></div>
+          </div>
+          <div class="send">
+            <button class="btn btn-beurre" type="submit">Demander ma table</button>
+            <small>Table côté fenêtre selon disponibilité</small>
+          </div>
+          <div class="ok" id="ok">Site de démonstration : aucune demande n'est envoyée. Sur un vrai site, la crêperie recevrait votre réservation.</div>
+        </form>
+      </div>
+    </div>
+    <ul class="acces">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9 16V8h4a2.5 2.5 0 0 1 0 5H9"/></svg><span><b>Parking du port</b>gratuit, à 2 min à pied</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c2 0 2-1.5 4.5-1.5S10 15 12 15s2-1.5 4.5-1.5S19 15 21 15M3 19c2 0 2-1.5 4.5-1.5S10 19 12 19s2-1.5 4.5-1.5S19 19 21 19"/><path d="M12 3v8M8 11l4-8 4 8"/></svg><span><b>Arrivée par la mer</b>ponton visiteurs en face</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-5h4v5"/></svg><span><b>Salle de plain-pied</b>accessible en fauteuil</span></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="big">Kenavo,<br><span>à bientôt sur le quai.</span></div>
+      <a class="btn btn-beurre" href="#reserver">Réserver une table</a>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Crêperie Le Goéland · 4 quai des Thoniers, 29900 Port-Kerlan</span>
+      <nav><a href="#carte">La carte</a><a href="#histoire">Histoire</a><a href="#avis">Avis</a><a href="#infos">Accès</a></nav>
+    </div>
+  </div>
+</footer>
+
+<a class="demo-badge" href="../../"><i></i><span>Site de démonstration · commerce fictif — par <b>Oneiros Studio</b></span></a>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oneiros Studio — Websites for local businesses</title>
+<meta name="description" content="Oneiros Studio designs websites for restaurants, bakeries, cafés and local shops. Custom websites, online in 1–2 weeks and kept up to date for you.">
+<meta property="og:title" content="Oneiros Studio — Websites for local businesses">
+<meta property="og:description" content="Restaurants, bakeries, cafés, garages: a website made for your place.">
+<meta property="og:image" content="https://oneiros-studio.com/web/demos/juniper-bakery/apercu.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0C1616">
+<link rel="icon" href="../assets/seal.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600&family=Caveat:wght@500;700&display=swap">
+<style>
+:root{
+  --night:#0C1616; --night-2:#070D0D; --cream:#EDE6D6; --paper:#F1ECE1; --ink:#141210;
+  --gold:#E2B13C; --red:#D3271D; --muted:#9FA7A2; --line:rgba(237,230,214,.18);
+  --display:"Big Shoulders Display",Impact,sans-serif; --body:"Barlow",Helvetica,Arial,sans-serif; --hand:"Caveat",cursive;
+  --pad:clamp(16px,4.4vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--night);color:var(--cream);font-family:var(--body);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+section{scroll-margin-top:70px}
+header{position:fixed;left:0;right:0;top:0;z-index:20;background:linear-gradient(180deg,rgba(12,22,22,.92),rgba(12,22,22,.6));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(226,177,60,.18)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:.08em;text-decoration:none}
+nav{display:flex;align-items:center;gap:clamp(14px,2.6vw,34px)}
+nav a{text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:color .2s}
+nav a:hover,nav a.on{color:var(--gold)}
+.hand{font-family:var(--hand);color:var(--gold);font-weight:500;line-height:1.1}
+.lang{border:1px solid var(--line);background:none;color:var(--cream);font:inherit;font-size:12px;letter-spacing:.16em;padding:6px 10px;cursor:pointer}
+.lang:hover{border-color:var(--gold);color:var(--gold)}
+.eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,11vw,168px);line-height:.82;color:var(--gold);text-transform:uppercase}
+h2{font-family:var(--display);font-weight:900;font-size:clamp(46px,6.4vw,92px);line-height:.85;text-transform:uppercase}
+h3{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+
+/* hero */
+.hero{padding:clamp(120px,15vw,190px) 0 clamp(50px,7vw,90px);position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,5vw,80px);align-items:end}
+.hero p.lead{font-size:clamp(19px,1.6vw,22px);max-width:34em;margin-top:28px;color:var(--cream)}
+.hero .note{font-size:30px;margin-top:22px;display:block}
+.hero .side{border-left:1px solid var(--line);padding-left:clamp(18px,2.4vw,34px);display:grid;gap:18px}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:56px;line-height:.9;color:var(--cream)}
+.stat span{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--night);background:var(--gold);padding:15px 26px;text-decoration:none;transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+
+/* demos */
+.demos{padding:clamp(40px,6vw,80px) 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.head .hand{font-size:28px}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(16px,2.2vw,30px)}
+.demo{grid-column:span 2;text-decoration:none;display:block;background:var(--night-2);border:1px solid var(--line);transition:transform .3s,border-color .3s}
+.demo:nth-child(1),.demo:nth-child(2){grid-column:span 3}
+.demo:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--gold)}
+.demo .shot{aspect-ratio:1400/820;overflow:hidden;background:#111}
+.demo .shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.demo:hover .shot img{transform:scale(1.03)}
+.demo .meta{padding:16px 18px 18px;display:flex;justify-content:space-between;align-items:end;gap:12px}
+.demo .meta span{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.demo .meta i{font-style:normal;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.disclaim{margin-top:18px;font-size:14px;color:var(--muted)}
+
+/* process */
+.process{padding:clamp(70px,9vw,120px) 0;background:var(--paper);color:var(--ink)}
+.process .eyebrow{color:var(--red)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,44px);margin-top:clamp(30px,4vw,54px);counter-reset:s}
+.step{border-top:3px solid var(--ink);padding-top:18px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--display);font-weight:900;font-size:64px;line-height:1;color:var(--red);display:block;margin-bottom:10px}
+.step p{margin-top:10px;font-size:17px}
+.process .hand{color:var(--red);font-size:28px;display:block;margin-top:34px}
+
+/* included + pricing */
+.offer{padding:clamp(70px,9vw,120px) 0}
+.offer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px)}
+.incl{list-style:none;margin-top:28px;display:grid;gap:12px}
+.incl li{padding-left:30px;position:relative;font-size:18px}
+.incl li::before{content:"✦";position:absolute;left:0;color:var(--gold)}
+.prices{display:grid;gap:18px;align-content:start;margin-top:8px}
+.price{border:1px solid var(--line);padding:24px 26px;background:var(--night-2)}
+.price .lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.price .amt{font-family:var(--display);font-weight:900;font-size:clamp(46px,5vw,64px);line-height:1;color:var(--gold);margin:8px 0 6px}
+.price p{font-size:16px;color:var(--cream);opacity:.85}
+
+/* contact */
+.contact{padding:clamp(80px,10vw,130px) 0 clamp(60px,8vw,100px);border-top:1px solid var(--line)}
+.contact .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:end}
+.contact h2 span{color:var(--gold)}
+.contact .hand{font-size:30px;display:block;margin-top:16px}
+.mail{display:block;font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,40px);text-decoration:none;color:var(--gold);word-break:break-all;margin-top:10px}
+.mail:hover{text-decoration:underline}
+.contact .small{font-size:14px;color:var(--muted);margin-top:12px}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{text-decoration:none}footer a:hover{color:var(--gold)}
+
+@media (max-width:900px){
+  .hero .wrap,.offer .wrap,.contact .wrap{grid-template-columns:1fr}
+  .hero .side{border-left:none;border-top:1px solid var(--line);padding:22px 0 0;grid-template-columns:repeat(3,1fr)}
+  .stat b{font-size:40px}
+  .grid{grid-template-columns:1fr}
+  .demo,.demo:nth-child(1),.demo:nth-child(2){grid-column:auto}
+  .steps{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  nav .opt,nav .hand{display:none}
+  .hero .side{grid-template-columns:1fr 1fr}
+  .stat span{letter-spacing:.1em}
+  .demo .meta{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../" aria-label="Oneiros Studio">ONEIROS</a>
+    <nav>
+      <a class="opt" href="../#work" data-i18n="nav_video">Video</a>
+      <a class="on" href="#demos" data-i18n="nav_web">Websites</a>
+      <a class="opt" href="#included" data-i18n="nav_incl">What's included</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <button class="lang" id="lang" aria-label="Switch language">FR</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrow">Oneiros Studio · websites for local businesses</span>
+        <h1 data-i18n-html="h1" style="margin-top:18px">Your shop,<br>online.</h1>
+        <p class="lead" data-i18n="lead">Restaurants, bakeries, cafés, garages and local shops. A website designed for your place — not a template — online in 1–2 weeks, and kept up to date for you.</p>
+        <span class="hand note" data-i18n="note">no template — made for your place ↓</span>
+        <a class="cta" href="#contact" data-i18n="cta">Let's talk about your site</a>
+      </div>
+      <div class="side">
+        <div class="stat"><b data-i18n="s1b">Custom</b><span data-i18n="s1">design, never a template</span></div>
+        <div class="stat"><b data-i18n="s2b">1–2</b><span data-i18n="s2">weeks to go live</span></div>
+        <div class="stat"><b data-i18n="s3b">100%</b><span data-i18n="s3">yours: domain in your name</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demos" id="demos">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n-html="demos_h">Demo<br>sites</h2>
+        <span class="hand" data-i18n="demos_note">click one — they're fully built</span>
+      </div>
+      <div class="grid">
+        <a class="demo" href="demos/juniper-bakery/"><div class="shot"><img loading="lazy" src="demos/juniper-bakery/apercu.jpg" alt="Juniper Street Bakery demo website"></div><div class="meta"><div><h3>Juniper Street Bakery</h3><span data-i18n="t_bakery">Artisan bakery · Vermont</span></div><i data-i18n="open">Open demo →</i></div></a>
+        <a class="demo" href="demos/copper-spoon-diner/"><div class="shot"><img loading="lazy" src="demos/copper-spoon-diner/apercu.jpg" alt="The Copper Spoon Diner demo website"></div><div class="meta"><div><h3>The Copper Spoon Diner</h3><span data-i18n="t_diner">American diner · Oklahoma</span></div><i data-i18n="open">Open demo →</i></div></a>
+        <a class="demo" href="demos/saltmarsh-coffee/"><div class="shot"><img loading="lazy" src="demos/saltmarsh-coffee/apercu.jpg" alt="Saltmarsh Coffee Co. demo website"></div><div class="meta"><div><h3>Saltmarsh Coffee</h3><span data-i18n="t_coffee">Coastal café · South Carolina</span></div><i data-i18n="open">Open demo →</i></div></a>
+        <a class="demo" href="demos/creperie-le-goeland/"><div class="shot"><img loading="lazy" src="demos/creperie-le-goeland/apercu.jpg" alt="Crêperie Le Goéland demo website"></div><div class="meta"><div><h3>Crêperie Le Goéland</h3><span data-i18n="t_creperie">Crêperie · Brittany, France</span></div><i data-i18n="open">Open demo →</i></div></a>
+        <a class="demo" href="demos/ironside-auto/"><div class="shot"><img loading="lazy" src="demos/ironside-auto/apercu.jpg" alt="Ironside Auto Repair demo website"></div><div class="meta"><div><h3>Ironside Auto Repair</h3><span data-i18n="t_garage">Auto repair · Texas</span></div><i data-i18n="open">Open demo →</i></div></a>
+      </div>
+      <p class="disclaim" data-i18n="disclaim">These are demo sites for fictional businesses, built to show different styles. Every real project gets its own design, made from your place, your colors and your customers' words.</p>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="proc_e">How it works</span>
+      <h2 data-i18n-html="proc_h" style="margin-top:14px">Simple,<br>start to finish.</h2>
+      <div class="steps">
+        <div class="step"><h3 data-i18n="p1h">We talk</h3><p data-i18n="p1">A short call about your place, your menu, your customers and how you take bookings or orders.</p></div>
+        <div class="step"><h3 data-i18n="p2h">I design your site</h3><p data-i18n="p2">A design made from your place, your colors and your customers' words. We adjust it together until it really feels like you.</p></div>
+        <div class="step"><h3 data-i18n="p3h">Online in 1–2 weeks</h3><p data-i18n="p3">I put it online on your own domain, connect it to your Google listing, and keep it up to date. You just send me a message when something changes.</p></div>
+      </div>
+      <span class="hand" data-i18n="proc_note">nothing technical on your side — that's my job</span>
+    </div>
+  </section>
+
+  <section class="offer" id="included">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow" data-i18n="inc_e">What's included</span>
+        <h2 data-i18n-html="inc_h" style="margin-top:14px">Everything<br>to get found</h2>
+        <ul class="incl">
+          <li data-i18n="i1">A custom design, made for desktop and phone</li>
+          <li data-i18n="i2">Your menu, products or services, hours and location</li>
+          <li data-i18n="i3">A booking or contact form sent straight to your phone</li>
+          <li data-i18n="i4">Your reviews and photos, front and center</li>
+          <li data-i18n="i5">Basic Google setup: linked to your Maps listing</li>
+          <li data-i18n="i6">Your domain name, registered in your business's name</li>
+        </ul>
+      </div>
+      <div class="prices">
+        <div class="price"><div class="lbl" data-i18n="fr1l">Made for you</div><div class="amt" data-i18n="fr1a">Custom design</div><p data-i18n="fr1p">Every site is designed from scratch for one business — never a template.</p></div>
+        <div class="price"><div class="lbl" data-i18n="fr2l">Then</div><div class="amt" data-i18n="fr2a">A clear quote</div><p data-i18n="fr2p">After a short call about your needs — no surprises, nothing hidden.</p></div>
+      </div>
+    
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow" data-i18n="c_e">Your place next</span>
+        <h2 data-i18n-html="c_h" style="margin-top:14px">Want to see<br><span>your site?</span></h2>
+        <span class="hand" data-i18n="c_note">tell me about your business — I'll take it from there</span>
+      </div>
+      <div>
+        <a class="mail" href="mailto:antoine@oneiros-studio.com">antoine@oneiros-studio.com</a>
+        <p class="small" data-i18n="c_small">Antoine — Oneiros Studio · I reply within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© Oneiros Studio</span><a href="../" data-i18n="foot">Also: video editing &amp; motion design →</a></div></footer>
+
+<script>
+const T={
+ en:{},
+ fr:{
+  nav_video:"Vidéo",nav_web:"Sites web",nav_incl:"Ce qui est inclus",nav_contact:"Contact",
+  eyebrow:"Oneiros Studio · sites pour commerces",
+  h1:"Votre commerce,<br>en ligne.",
+  lead:"Restaurants, boulangeries, cafés, garages et commerces de proximité. Un site pensé pour votre commerce — pas un modèle tout fait — en ligne en 1 à 2 semaines, et tenu à jour pour vous.",
+  note:"pas de modèle — fait pour votre commerce ↓",cta:"Parlons de votre site",
+  s1b:"Sur mesure",s1:"design, jamais de modèle",s2b:"1–2",s2:"semaines pour la mise en ligne",s3b:"100 %",s3:"à vous : domaine à votre nom",
+  demos_h:"Sites de<br>démo",demos_note:"cliquez — ils sont entièrement construits",
+  t_bakery:"Boulangerie artisanale · Vermont",t_diner:"Diner américain · Oklahoma",t_coffee:"Café en bord de mer · Caroline du Sud",t_creperie:"Crêperie · Bretagne",t_garage:"Garage · Texas",
+  open:"Voir la démo →",
+  disclaim:"Ce sont des sites de démonstration pour des commerces fictifs, faits pour montrer différents styles. Chaque vrai projet a son propre design, créé à partir de votre lieu, de vos couleurs et des mots de vos clients.",
+  proc_e:"Comment ça marche",proc_h:"Simple,<br>du début à la fin.",
+  p1h:"On en parle",p1:"Un court appel : votre commerce, votre carte, vos clients, votre façon de prendre les réservations ou les commandes.",
+  p2h:"Je crée votre site",p2:"Un design fait à partir de votre lieu, de vos couleurs et des mots de vos clients. On l'ajuste ensemble jusqu'à ce qu'il vous ressemble vraiment.",
+  p3h:"En ligne en 1 à 2 semaines",p3:"Je le mets en ligne sur votre propre nom de domaine, je le relie à votre fiche Google et je le tiens à jour. Vous m'envoyez simplement un message quand quelque chose change.",
+  proc_note:"rien de technique pour vous — c'est mon métier",
+  inc_e:"Ce qui est inclus",inc_h:"Tout pour<br>être trouvé",
+  i1:"Un design sur mesure, pour ordinateur et téléphone",i2:"Votre carte, vos produits ou services, horaires et accès",i3:"Un formulaire de réservation ou de contact envoyé sur votre téléphone",i4:"Vos avis et vos photos mis en avant",i5:"Référencement Google de base : lien avec votre fiche Maps",i6:"Votre nom de domaine, enregistré au nom de votre société",
+  fr1l:"Fait pour vous",fr1a:"Design sur mesure",fr1p:"Chaque site est conçu de zéro pour un seul commerce — jamais un modèle.",
+  fr2l:"Ensuite",fr2a:"Un devis clair",fr2p:"Après un court appel sur vos besoins — sans surprise, rien de caché.",
+  c_e:"Votre commerce, ensuite",c_h:"Envie de voir<br><span>votre site ?</span>",c_note:"parlez-moi de votre commerce — je m'occupe du reste",
+  c_small:"Antoine — Oneiros Studio · Réponse sous 24 heures.",foot:"Aussi : montage vidéo & motion design →"
+ }
+};
+document.querySelectorAll("[data-i18n],[data-i18n-html]").forEach(el=>{const k=el.dataset.i18n||el.dataset.i18nHtml;T.en[k]=el.innerHTML;});
+let lang=(navigator.language||"en").slice(0,2)==="fr"?"fr":"en";
+try{const s=localStorage.getItem("lang");if(s==="fr"||s==="en")lang=s;}catch(e){}
+function apply(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n],[data-i18n-html]").forEach(el=>{const k=el.dataset.i18n||el.dataset.i18nHtml;const v=T[lang][k];if(v!==undefined)el.innerHTML=v;});
+  document.getElementById("lang").textContent=lang==="fr"?"EN":"FR";
+  document.title=lang==="fr"?"Oneiros Studio — Sites internet pour commerces":"Oneiros Studio — Websites for local businesses";
+}
+document.getElementById("lang").addEventListener("click",()=>{lang=lang==="fr"?"en":"fr";try{localStorage.setItem("lang",lang)}catch(e){}apply();});
+apply();
+</script>
+</body>
+</html>

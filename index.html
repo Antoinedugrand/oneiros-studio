@@ -399,9 +399,9 @@ const T = {
       services:"Classifieds",services_s:"Edit · Motion · Grade · Sound",n_svc:"half of the picture is sound",note:"Every project can be cut in 16:9 and 9:16, for Reels, TikTok and Shorts.",
       soon:"Coming soon to your feed",contact:"Your story<br><span>next</span>",contact_p:"send us the footage, or just the idea",tips:"Tips line: DM @oneirosstudio",
       foot:"AI visuals, editing and sound design",close:"Close",
-      all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Courses & VSL",anim:"Animation",gaming:"Gaming",
+      all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Courses & VSL",anim:"Animation",gaming:"Gaming",realestate:"Real estate",
       client:"Client",spec:"Spec",test:"Editing test",perso:"Personal project",studio:"Studio",
-      sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — channel intros"},
+      sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — channel intros",sub_realestate:"real estate — property reels"},
   fr:{nav_work:"Travaux",nav_services:"Services",nav_rates:"Tarifs",nav_web:"Sites web",rates:"Tarifs",rates_s:"choisissez votre ligne, puis écrivez-nous",h_addons:"Options",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Personne<br>ne décroche",
       hero:"Teasers de lancement, cours et courts-métrages. Chaque projet commence comme un film : une histoire, une image, un son.",tags:"MONTAGE · MOTION DESIGN · ÉTALONNAGE · SON",reel:"Voir le showreel",
       n_hook:"l'accroche tombe ici ↓",n_nora:"elle n'existe pas",clip_l:"Le cut — le journal d'Oneiros",clip_r:"À lire jusqu'au bout",banner:"Un studio fait des vidéos qu'on regarde en entier",
@@ -412,12 +412,13 @@ const T = {
       services:"Petites annonces",services_s:"Montage · Motion · Étalonnage · Son",n_svc:"la moitié de l'image, c'est le son",note:"Chaque projet peut être livré en 16:9 et en 9:16, pour Reels, TikTok et Shorts.",
       soon:"Bientôt dans votre fil",contact:"Votre histoire<br><span>ensuite</span>",contact_p:"envoyez-nous les rushs, ou juste l'idée",tips:"Ligne directe : DM @oneirosstudio",
       foot:"Visuels IA, montage et sound design",close:"Fermer",
-      all:"Tout",ads:"Pubs & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Cours & VSL",anim:"Animation",gaming:"Gaming",
+      all:"Tout",ads:"Pubs & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Cours & VSL",anim:"Animation",gaming:"Gaming",realestate:"Immobilier",
       client:"Client",spec:"Spec",test:"Test de montage",perso:"Projet perso",studio:"Studio",
-      sub_clients:"clients",sub_spec:"spec — pubs réalisées sans commande",sub_fiction:"fiction",sub_vsl:"cours & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — intros de chaîne"}
+      sub_clients:"clients",sub_spec:"spec — pubs réalisées sans commande",sub_fiction:"fiction",sub_vsl:"cours & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — intros de chaîne",sub_realestate:"immobilier — reels de biens"}
 };
 const ROLE_PROMO = {fr:"Direction artistique, visuels IA, montage, sound design",en:"Art direction, AI visuals, editing, sound design"};
 const W = [
+ {id:"villa-lumen",title:{fr:"Villa Lumen — reel immobilier",en:"Villa Lumen — real estate reel"},kind:"spec",cat:"realestate",ratio:"9:16",dur:"0:31",fr:"Reel pour une villa (fictive) : hook sur la piscine, titre avec les chiffres clés affiché tout du long, étalonnage clair et naturel, speed ramps, et un home staging virtuel qui se dévoile sur la relance de la musique. Rushes : Pexels (Alef Morais).",en:"Reel for a (fictional) villa: a pool hook, key facts on screen throughout, a clean natural grade, speed ramps, and a virtual staging reveal timed to the music drop. Footage: Pexels (Alef Morais).",role:{fr:"Montage, étalonnage, motion design, home staging IA, musique (Suno)",en:"Editing, color grading, motion design, AI virtual staging, music (Suno)"}},
  {id:"blitz-box",title:{fr:"Blitz Box — intro de chaîne",en:"Blitz Box — channel intro"},kind:"spec",cat:"gaming",dur:"0:07",fr:"Intro 3D pour une chaîne gaming (fictive) : course, saut, logo qui claque lettre par lettre, effets anime et sound design calé sur la musique.",en:"3D intro for a (fictional) gaming channel: run, jump, a logo that slams in letter by letter, anime FX and sound design locked to the music.",role:{fr:"3D (Blender), motion design, effets 2D, sound design",en:"3D (Blender), motion design, 2D FX, sound design"}},
  {id:"le-sceau",title:{fr:"Le sceau",en:"The Seal"},kind:"client",cat:"ads",dur:"0:10",fr:"Teaser de lancement d'un protocole de confidentialité. Tout le monde voit vos transactions — sauf celle-ci.",en:"Launch teaser for a privacy protocol. Everyone sees your moves — except this one.",role:ROLE_PROMO},
  {id:"homme-tele",title:{fr:"L'homme-télé",en:"TV Head"},kind:"client",cat:"ads",dur:"0:16",fr:"Teaser de lancement d'un token — un seul plan, une tension qui monte jusqu'à l'embrasement.",en:"Token launch teaser — one shot, tension building up to ignition.",role:ROLE_PROMO},
@@ -469,7 +470,7 @@ function rateCard(){
   $("#raddons").innerHTML=r.addons.length?`<h3>${T[lang].h_addons}</h3>`+r.addons.map(a=>`<div class="raddon"><span>${a.name[lang]}</span><b>${a.price[lang]}</b></div>`).join(""):"";
   $("#rterms").innerHTML=r.terms[lang].map(t=>`<li>${t}</li>`).join("");
 }
-const CATS=["all","ads","vertical","fiction","vsl","anim","gaming"];
+const CATS=["all","ads","vertical","fiction","vsl","anim","gaming","realestate"];
 const TILT=[-1.6,1.2,-.6,1.8,-1.1,.8];
 let lang = (navigator.language||"en").slice(0,2)==="fr" ? "fr" : "en";
 try{ const s=localStorage.getItem("lang"); if(s==="fr"||s==="en") lang=s; }catch(e){}
@@ -530,7 +531,8 @@ function render(){
        [T[lang].sub_vsl, list.filter(w=>w.cat==="vsl")],
        [T[lang].sub_vertical, list.filter(w=>w.cat==="vertical")],
        [T[lang].sub_anim, list.filter(w=>w.cat==="anim")],
-       [T[lang].sub_gaming, list.filter(w=>w.cat==="gaming")]]
+       [T[lang].sub_gaming, list.filter(w=>w.cat==="gaming")],
+       [T[lang].sub_realestate, list.filter(w=>w.cat==="realestate")]]
     : [[null,list]];
   groups.forEach(([title,items])=>{
     if(!items.length) return;

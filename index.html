@@ -581,7 +581,7 @@ $("#reel").addEventListener("click",()=>openLB("showreel","Oneiros — Showreel"
 
 $("#lang").onclick=()=>{lang=lang==="fr"?"en":"fr";try{localStorage.setItem("lang",lang)}catch(e){};render()};
 render();
-if(cat!=="all") requestAnimationFrame(()=>$("#work").scrollIntoView());
+if(cat!=="all"){ try{history.scrollRestoration="manual"}catch(e){}; const toWork=()=>$("#work").scrollIntoView({behavior:"instant"}); requestAnimationFrame(toWork); addEventListener("load",toWork); }
 </script>
 </body>
 </html>

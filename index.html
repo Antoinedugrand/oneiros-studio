@@ -142,6 +142,12 @@ html[lang="fr"] .hero h1{line-height:.94;font-size:clamp(76px,11.2vw,160px)}
 .thumb video{opacity:0}
 .card.playing .thumb video{opacity:1}
 .tag{position:absolute;top:10px;left:10px;font-family:var(--label);font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 7px}
+.chan{padding-top:clamp(70px,9vw,110px)}
+.chan-p{max-width:760px;font-size:17px;line-height:1.55;color:var(--cream);opacity:.9;margin:-6px 0 34px}
+a.card{text-decoration:none}
+.card.yt .tag{background:#c4302b}
+.chan-all{display:inline-block;margin-top:38px;font-family:var(--label);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:12px 18px;text-decoration:none}
+.chan-all:hover{background:var(--gold)}
 .dur{position:absolute;right:10px;bottom:10px;font-size:12px;letter-spacing:.06em;background:rgba(12,22,22,.82);color:var(--cream);padding:2px 7px}
 .card h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:.95;text-transform:uppercase;margin-top:14px}
 .card p{font-family:var(--paperfont);color:#3d3a35;font-size:15px;line-height:1.45;margin-top:6px}
@@ -265,6 +271,7 @@ dialog::backdrop{background:rgba(5,9,9,.95)}
     <a class="brand" href="#top" aria-label="Oneiros Studio">ONEIROS</a>
     <nav>
       <a href="#work" data-i18n="nav_work">Work</a>
+      <a class="opt" href="#channel" data-i18n="nav_channel">Channel</a>
       <a class="opt" href="#services" data-i18n="nav_services">Services</a>
       <a class="opt" href="#rates" data-i18n="nav_rates">Rates</a>
       <a href="web/" data-i18n="nav_web">Websites</a>
@@ -319,6 +326,15 @@ dialog::backdrop{background:rgba(5,9,9,.95)}
       <div class="filters" id="filters"></div>
       <div id="works"></div>
       <span class="hand n-show" data-i18n="n_show">every frame earns the next one</span>
+    </div>
+  </section>
+
+  <section class="chan" id="channel">
+    <div class="wrap">
+      <div class="show-head"><h2 data-i18n="chan">The Oneiros channel</h2><span class="line"></span><span class="hand" data-i18n="chan_s">our own history documentaries</span></div>
+      <p class="chan-p" data-i18n="chan_p"></p>
+      <div class="grid" id="ytgrid"></div>
+      <a class="chan-all" href="https://www.youtube.com/channel/UCqa5WOluzLWjryTKaNuWJ4Q" target="_blank" rel="noopener" data-i18n="chan_all">See the channel on YouTube</a>
     </div>
   </section>
 
@@ -401,7 +417,7 @@ const T = {
       foot:"AI visuals, editing and sound design",close:"Close",
       all:"All",ads:"Ads & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Courses & VSL",anim:"Animation",gaming:"Gaming",realestate:"Real estate",business:"Business",storytelling:"Storytelling",ugc:"UGC ads",beforeafter:"Before / After",streetint:"Street interviews",anime:"Anime",
       client:"Client",spec:"Spec",test:"Editing test",perso:"Personal project",studio:"Studio",
-      sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — channel intros & gameplay edits",sub_realestate:"real estate — property reels",sub_business:"business — talking-head reels",sub_storytelling:"storytelling — faceless YouTube openings",sub_ugc:"UGC — creator-style ads",sub_beforeafter:"before / after — satisfying transformations",sub_streetint:"street interviews — vox pops",sub_anime:"anime — recaps & parodies"},
+      sub_clients:"clients",sub_spec:"spec — ads made without a brief",sub_fiction:"fiction",sub_vsl:"courses & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — channel intros & gameplay edits",sub_realestate:"real estate — property reels",sub_business:"business — talking-head reels",sub_storytelling:"storytelling — faceless YouTube openings",sub_ugc:"UGC — creator-style ads",sub_beforeafter:"before / after — satisfying transformations",sub_streetint:"street interviews — vox pops",sub_anime:"anime — recaps & parodies",longform:"YouTube & podcasts",sub_longform:"YouTube & podcasts — long-form client edits",nav_channel:"Channel",chan:"The Oneiros channel",chan_s:"our own history documentaries",chan_p:"The studio runs its own English-language history channel. Research, archives, script, voice, 3D maps, motion design and sound design: everything is made here. Eleven documentaries published since October 2026.",chan_all:"See the channel on YouTube →",yt:"YouTube"},
   fr:{nav_work:"Travaux",nav_services:"Services",nav_rates:"Tarifs",nav_web:"Sites web",rates:"Tarifs",rates_s:"choisissez votre ligne, puis écrivez-nous",h_addons:"Options",nav_contact:"Contact",edition:"édition de nuit",production:"Une production Oneiros Studio",h1:"Personne<br>ne décroche",
       hero:"Teasers de lancement, cours et courts-métrages. Chaque projet commence comme un film : une histoire, une image, un son.",tags:"MONTAGE · MOTION DESIGN · ÉTALONNAGE · SON",reel:"Voir le showreel",
       n_hook:"l'accroche tombe ici ↓",n_nora:"elle n'existe pas",clip_l:"Le cut — le journal d'Oneiros",clip_r:"À lire jusqu'au bout",banner:"Un studio fait des vidéos qu'on regarde en entier",
@@ -414,10 +430,12 @@ const T = {
       foot:"Visuels IA, montage et sound design",close:"Fermer",
       all:"Tout",ads:"Pubs & teasers",vertical:"Vertical",fiction:"Fiction",vsl:"Cours & VSL",anim:"Animation",gaming:"Gaming",realestate:"Immobilier",business:"Business",storytelling:"Storytelling",ugc:"Pubs UGC",beforeafter:"Avant / après",streetint:"Micro-trottoir",anime:"Animé",
       client:"Client",spec:"Spec",test:"Test de montage",perso:"Projet perso",studio:"Studio",
-      sub_clients:"clients",sub_spec:"spec — pubs réalisées sans commande",sub_fiction:"fiction",sub_vsl:"cours & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — intros de chaîne et montages gameplay",sub_realestate:"immobilier — reels de biens",sub_business:"business — reels face caméra",sub_storytelling:"storytelling — ouvertures YouTube en voix off",sub_ugc:"UGC — pubs façon créatrice",sub_beforeafter:"avant / après — transformations satisfaisantes",sub_streetint:"micro-trottoir — interviews de rue",sub_anime:"animé — récaps et parodies"}
+      sub_clients:"clients",sub_spec:"spec — pubs réalisées sans commande",sub_fiction:"fiction",sub_vsl:"cours & VSL",sub_vertical:"vertical",sub_anim:"animation",sub_gaming:"gaming — intros de chaîne et montages gameplay",sub_realestate:"immobilier — reels de biens",sub_business:"business — reels face caméra",sub_storytelling:"storytelling — ouvertures YouTube en voix off",sub_ugc:"UGC — pubs façon créatrice",sub_beforeafter:"avant / après — transformations satisfaisantes",sub_streetint:"micro-trottoir — interviews de rue",sub_anime:"animé — récaps et parodies",longform:"YouTube & podcasts",sub_longform:"YouTube & podcasts — montages longs pour des clients",nav_channel:"Chaîne",chan:"La chaîne Oneiros",chan_s:"nos propres documentaires d'histoire",chan_p:"Le studio a sa propre chaîne d'histoire en anglais. Recherche, archives, script, voix, cartes 3D, motion design et sound design : tout est fait ici. Onze documentaires publiés depuis octobre 2026.",chan_all:"Voir la chaîne sur YouTube →",yt:"YouTube"}
 };
 const ROLE_PROMO = {fr:"Direction artistique, visuels IA, montage, sound design",en:"Art direction, AI visuals, editing, sound design"};
 const W = [
+ {id:"kasper-trading",title:{fr:"Kasper Trading — vidéo YouTube",en:"Kasper Trading — YouTube video"},kind:"client",cat:"longform",dur:"1:26",fr:"Les 86 premières secondes d'une vidéo de 14 min pour une chaîne trading d'environ 300 k abonnés : face caméra étalonnée, écran partagé avec une feuille illustrée, schémas animés, sommaire, puis captures TradingView avec zooms.",en:"The first 86 seconds of a 14-min video for a ~300k-subscriber trading channel: graded talking head, split screen with an illustrated paper sheet, animated diagrams, chapter list, then TradingView captures with zooms.",role:{fr:"Dérush, montage, étalonnage, motion design, illustrations, mixage",en:"Rough cut, edit, grade, motion design, illustrations, mix"}},
+ {id:"camille-molotov-awards",title:{fr:"Molotov Awards avec Camille Cerf — podcast",en:"Molotov Awards with Camille Cerf — podcast"},kind:"client",cat:"longform",dur:"1:35",fr:"Ouverture d'un épisode de 54 min tourné en trois caméras : teaser sous-titré mot à mot, jingle et carton titre, multicam qui suit la personne qui parle, étalonnage du studio, habillage aux couleurs de l'émission.",en:"Opening of a 54-min episode shot on three cameras: word-by-word captioned teaser, jingle and title card, multicam that follows whoever speaks, studio grade, show-branded graphics.",role:{fr:"Dérush, multicam, étalonnage, habillage, sous-titres, mixage",en:"Rough cut, multicam, grade, graphics, captions, mix"}},
  {id:"strongest-villain",title:{fr:"The Strongest Villain in Anime History — animé",en:"The Strongest Villain in Anime History — anime"},kind:"spec",cat:"anime",dur:"0:51",fr:"Ouverture d'une récap parodique façon chaîne animé : hook « from this… to THIS », cartons de personnages, barre de puissance, case de manga, onomatopées japonaises, bataille finale, K.O. et chute. Voix off, sous-titres mot à mot, musique et sound design. Images : « Afternoon Class » de Seoro Oh (CC BY) · musique et bruitages Pixabay · voix off IA.",en:"Opening of an anime-channel parody recap: \"from this… to THIS\" hook, character cards, power bar, manga panel, Japanese SFX text, final battle, K.O. and punchline. Voiceover, word-by-word captions, music and sound design. Footage: \"Afternoon Class\" by Seoro Oh (CC BY) · Pixabay music and SFX · AI voiceover.",role:{fr:"Script, montage, motion design, sous-titres, sound design, voix off IA",en:"Script, editing, motion design, captions, sound design, AI voiceover"}},
  {id:"starting-salary",title:{fr:"What's your starting salary? — micro-trottoir",en:"What's your starting salary? — street interview"},kind:"spec",cat:"streetint",ratio:"9:16",dur:"0:28",fr:"Short micro-trottoir tiré d'une interview de rue de 27 min à Londres : la question dès la 1re seconde, trois diplômés aux salaires qui montent, jump cuts sans pause, punch-ins sur les chiffres, sous-titres et étiquettes métier + salaire, fin sur la chute. Rushes : MrUniverse, « Asking College Grads Their Starting Salary » (CC BY).",en:"Street-interview Short cut from a 27-min London vox pop: the question in the first second, three graduates with rising salaries, pause-free jump cuts, punch-ins on the numbers, captions and job + salary labels, ending on the punchline. Footage: MrUniverse, \"Asking College Grads Their Starting Salary\" (CC BY).",role:{fr:"Sélection des répliques, montage, recadrage vertical, sous-titres, étiquettes",en:"Selects, editing, vertical reframing, captions, labels"}},
  {id:"van-interior-cleaning",title:{fr:"Utilitaire de A à Z — nettoyage intérieur avant / après",en:"Van detailing — interior before / after"},kind:"test",cat:"beforeafter",ratio:"9:16",dur:"0:40",fr:"Test de montage pour une agence de contenu : le nettoyage complet de l'intérieur d'un utilitaire en 40 s. Coupes calées sur le tempo d'une phonk, textes AVANT / APRÈS, flash et whoosh pour la révélation, bruitages du travail sous la musique, étalonnage plan par plan.",en:"Editing test for a content agency: a full van interior detailing job in 40 s. Cuts locked to a phonk tempo, BEFORE / AFTER titles, flash and whoosh on the reveal, work sounds under the music, shot-by-shot grading.",role:{fr:"Montage, étalonnage, sound design, musique (Suno)",en:"Editing, grading, sound design, music (Suno)"}},
@@ -467,6 +485,30 @@ const PHONES = [
  {loop:"oracle",full:"oracle-9x16",title:{fr:"L'oracle",en:"The Oracle"},w:145,lift:30,r:3},
  {loop:"dividendes",full:"dividendes-9x16",title:{fr:"Dividendes",en:"Dividends"},w:130,lift:0,r:6},
 ];
+/* chaîne YouTube Oneiros : vidéos longues publiées (miniatures dans posters/yt-<id>.jpg) */
+const YT = [
+ {id:"qj6RzmTdq08",t:"Why Australia Sent Machine Guns (and a Camera) After Birds",d:"7:55",fr:"La « guerre des émeus », Australie 1932 : archives, cartes et gravures animées.",en:"The 1932 \"Emu War\" in Australia: archives, maps and animated engravings."},
+ {id:"LmNuEe5p0rk",t:"The $1,000 Mine That Almost Sank a US Warship",d:"12:31",fr:"Le USS Samuel B. Roberts et une mine à 1 000 $, golfe Persique, 1988.",en:"USS Samuel B. Roberts and a $1,000 mine, Persian Gulf, 1988."},
+ {id:"v4mq4G2ujpg",t:"The Illegal Mission That Killed Blackbeard",d:"12:48",fr:"Le dernier combat de Barbe Noire : décors 3D, gravures qui se dessinent, abordage.",en:"Blackbeard's last fight: 3D sets, engravings drawing themselves, the boarding."},
+ {id:"NPC84f44-68",t:"The Night Witches Bombed the Nazis in Planes Made of Fabric",d:"7:34",fr:"Les « sorcières de la nuit » soviétiques : avions en 3D et archives de guerre.",en:"The Soviet \"Night Witches\": 3D aircraft and wartime archives."},
+ {id:"Y3JU1BElfJM",t:"The Most Famous Charge in History Was a Mistake",d:"15:15",fr:"La charge de la Brigade légère : carte 3D de la vallée et ordres mal compris.",en:"The Charge of the Light Brigade: a 3D map of the valley and misread orders."},
+ {id:"W6bY6N_J8Zk",t:"Guy Fawkes Didn't Plan the Gunpowder Plot. This Man Did.",d:"11:52",fr:"La Conspiration des poudres : archives annotées à l'encre rouge, cave en 3D.",en:"The Gunpowder Plot: archives marked up in red ink, a 3D cellar."},
+ {id:"kT5qGNwjvfQ",t:"The Halloween Murder That Ended Grave Robbing",d:"11:56",fr:"Les voleurs de cadavres d'Écosse et les cages de fer des cimetières.",en:"Scotland's body snatchers and the iron cages over graves."},
+ {id:"dNMnb503tOQ",t:"Winter Didn't Destroy Napoleon's Army. This 1869 Chart Shows What Did.",d:"10:38",fr:"La carte de Minard (1869) lue pas à pas : la campagne de Russie.",en:"Minard's 1869 chart, read step by step: the Russian campaign."},
+ {id:"ZS7MfQOkEbM",t:"The Bikini Is Named After a Nuclear Test Site",d:"9:59",fr:"Le maillot et l'atoll : actualités filmées de 1946.",en:"The swimsuit and the atoll: 1946 newsreels."},
+ {id:"JnMUj0cvMUc",t:"The Dark Origin of the Word \u201cDeadline\u201d",d:"10:23",fr:"L'origine sombre du mot « deadline ».",en:"The dark origin of the word \"deadline\"."},
+ {id:"jBHyhkEE4N4",t:"What If You Volunteered to Die First? The Real Story of the \"Forlorn Hope\"",d:"9:20",fr:"Les volontaires de la « Forlorn Hope », premiers à monter à l'assaut.",en:"The \"Forlorn Hope\" volunteers, first into the breach."},
+];
+function ytGrid(){
+  const g=$("#ytgrid"); g.innerHTML="";
+  YT.forEach((v,i)=>{
+    const a=document.createElement("a");
+    a.className="card yt"+(i%3===1?" taped":""); a.href="https://youtu.be/"+v.id; a.target="_blank"; a.rel="noopener";
+    a.style.setProperty("--r",TILT[i%TILT.length]+"deg");
+    a.innerHTML=`<div class="thumb"><img loading="lazy" src="posters/yt-${v.id}.jpg" alt=""><span class="tag">${T[lang].yt}</span><span class="dur">${v.d}</span></div><h3>${v.t}</h3><p>${v[lang]}</p>`;
+    g.appendChild(a);
+  });
+}
 const SVC = [
  {en:["Wanted: launches","Ads & teasers for web3 projects and brands. Script, visuals, edit, sound, end card."],fr:["Recherche : lancements","Pubs et teasers pour projets web3 et marques. Script, visuels, montage, son, carte de fin."]},
  {en:["Courses & VSL","Lessons people finish. Sales videos that hold the room."],fr:["Cours & VSL","Des cours suivis jusqu'au bout. Des vidéos de vente qui retiennent."]},
@@ -485,7 +527,7 @@ function rateCard(){
   $("#raddons").innerHTML=r.addons.length?`<h3>${T[lang].h_addons}</h3>`+r.addons.map(a=>`<div class="raddon"><span>${a.name[lang]}</span><b>${a.price[lang]}</b></div>`).join(""):"";
   $("#rterms").innerHTML=r.terms[lang].map(t=>`<li>${t}</li>`).join("");
 }
-const CATS=["all","ads","vertical","fiction","vsl","anim","gaming","realestate","business","storytelling","ugc","beforeafter","streetint","anime"];
+const CATS=["all","ads","longform","vertical","fiction","vsl","anim","gaming","realestate","business","storytelling","ugc","beforeafter","streetint","anime"];
 const TILT=[-1.6,1.2,-.6,1.8,-1.1,.8];
 let lang = (navigator.language||"en").slice(0,2)==="fr" ? "fr" : "en";
 try{ const s=localStorage.getItem("lang"); if(s==="fr"||s==="en") lang=s; }catch(e){}
@@ -544,6 +586,7 @@ function render(){
   const list=W.filter(w=>cat==="all"||w.cat===cat);
   const groups = cat==="all"
     ? [[T[lang].sub_clients, list.filter(w=>w.kind==="client"&&w.cat==="ads")],
+       [T[lang].sub_longform, list.filter(w=>w.cat==="longform")],
        [T[lang].sub_spec, list.filter(w=>w.cat==="ads"&&w.kind!=="client")],
        [T[lang].sub_fiction, list.filter(w=>w.cat==="fiction")],
        [T[lang].sub_vsl, list.filter(w=>w.cat==="vsl")],
@@ -567,6 +610,7 @@ function render(){
   const s=$("#svc"); s.innerHTML="";
   SVC.forEach(x=>{const d=document.createElement("div");d.className="svc";d.innerHTML=`<h3>${x[lang][0]}</h3><p>${x[lang][1]}</p>`;s.appendChild(d)});
   phones();
+  ytGrid();
   rateCard();
 }
 function openLB(id,title,desc){
